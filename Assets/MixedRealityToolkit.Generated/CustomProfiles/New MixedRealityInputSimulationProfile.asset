@@ -67,6 +67,6 @@ MonoBehaviour:
   handGestureAnimationSpeed: 8
   holdStartDuration: 0.5
   navigationStartThreshold: 0.03
-  defaultHandDistance: 0.5
+  defaultHandDistance: 1.2
   handDepthMultiplier: 0.03
   handJitterAmount: 0
