@@ -2,27 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: name polish
 public class MyCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    private MySelection a = null;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collidered");
+        if (other.tag == "CircularMenuSelection")
+        {
+            a = (MySelection)other.gameObject.GetComponent(typeof(MySelection));
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("uncollidered");
+        if (other.tag == "CircularMenuSelection")
+        {
+            a = null;
+        }
+    }
+
+    public void select()
+    {
+        if (a != null)
+        {
+            a.selected();
+            a = null;
+        }    
     }
 }
