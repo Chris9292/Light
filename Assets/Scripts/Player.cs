@@ -15,5 +15,7 @@ public class Player
     }
 
     
-
+    private void Start() {
+        Debug.Log("Hello");    
+    }
 }
