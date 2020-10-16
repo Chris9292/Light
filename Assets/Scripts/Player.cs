@@ -14,6 +14,13 @@ public class Player
         return this.health;
     }
 
+    private void GreetPlayer()
+    {
+
+        Debug.Log("hey cube");
+
+    }
+
     
     private void Start() {
         Debug.Log("Hello");    
