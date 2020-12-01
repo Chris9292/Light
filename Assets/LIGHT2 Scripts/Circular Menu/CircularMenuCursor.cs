@@ -7,6 +7,8 @@ using UnityEngine;
 public class CircularMenuCursor : MonoBehaviour
 {
     private CircularMenuSelection circularMenuSelection = null;
+
+    // Triggers OnHoverEntered event in CircularMenuSelection
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "CircularMenuSelection")
@@ -16,6 +18,7 @@ public class CircularMenuCursor : MonoBehaviour
         }
     }
 
+    // Triggers OnHoverExited event in CircularMenuSelection
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "CircularMenuSelection")
@@ -33,6 +36,13 @@ public class CircularMenuCursor : MonoBehaviour
             circularMenuSelection.ButtonClicked();
             circularMenuSelection = null;
         }
+    }
+
+    // Sets the position of the cursor to the parent's position
+    // May be used to reset the cursor back to its starting postion
+    public void SetToParentCoords()
+    {
+        transform.position = transform.parent.position;
     }
 
     // TODO: FIX THESE!
