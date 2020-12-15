@@ -13,7 +13,7 @@ public class CircularMenuCursor : MonoBehaviour
     {
         if (other.tag == "CircularMenuSelection")
         {
-            circularMenuSelection = (CircularMenuSelection)other.gameObject.GetComponent(typeof(CircularMenuSelection));
+            circularMenuSelection = other.gameObject.GetComponent<CircularMenuSelection>();
             circularMenuSelection.HoverEntered();
         }
     }
@@ -48,9 +48,9 @@ public class CircularMenuCursor : MonoBehaviour
     // TODO: FIX THESE!
     private void Start()
     {
-        Collider collider = (Collider)gameObject.GetComponent(typeof(Collider));
+        Collider collider = gameObject.GetComponent<Collider>();
         collider.isTrigger = true;
-        Rigidbody rigidbody = (Rigidbody)gameObject.GetComponent(typeof(Rigidbody));
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         //rigidbody.useGravity = false;
        // rigidbody.isKinematic = true;
     }

@@ -1,15 +1,16 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(TextMesh))]
+[RequireComponent(typeof(TextMeshPro))]
 public class DebugWindow : MonoBehaviour
 {
-    TextMesh textMesh;
+    TextMeshPro textMeshPro;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        textMesh = gameObject.GetComponent<TextMesh>();
+        textMeshPro = gameObject.GetComponent<TextMeshPro>();
     }
 
     void OnEnable()
@@ -24,13 +25,13 @@ public class DebugWindow : MonoBehaviour
 
     public void LogMessage(string message, string stackTrace, LogType type)
     {
-        if (textMesh.text.Length > 100)
+        if (textMeshPro.text.Length > 300)
         {
-            textMesh.text = message + "\n";
+            textMeshPro.text = message + "\n";
         }
         else
         {
-            textMesh.text += message + "\n";
+            textMeshPro.text += message + "\n";
         }
     }
 }

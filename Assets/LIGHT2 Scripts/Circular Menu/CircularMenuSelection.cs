@@ -45,7 +45,7 @@ public class CircularMenuSelection : MonoBehaviour
     private void Start()
     {
         gameObject.tag = "CircularMenuSelection";
-        Collider collider = (Collider)gameObject.GetComponent(typeof(Collider));
+        Collider collider = gameObject.GetComponent<Collider>();
         collider.isTrigger = false;
 
         if (DebugMode == true)

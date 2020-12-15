@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class myTest2 : MonoBehaviour
 {
-    //Texture2D targetTexture = null;
+    Texture2D targetTexture = null;
     // Start is called before the first frame update
     private void Start()
     {
+        targetTexture = Resources.Load<Texture2D>("chart");
         GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
         Renderer quadRenderer = quad.GetComponent<Renderer>() as Renderer;
         quadRenderer.material = new Material(Shader.Find("Mixed Reality Toolkit/Standard"));
@@ -15,7 +16,7 @@ public class myTest2 : MonoBehaviour
         quad.transform.parent = this.transform;
         quad.transform.localPosition = new Vector3(0.7f, 0.4f, 5.0f);
 
-        //quadRenderer.material.SetTexture("_MainTex", targetTexture);
+        quadRenderer.material.SetTexture("_MainTex", targetTexture);
     }
 
     // Update is called once per frame
