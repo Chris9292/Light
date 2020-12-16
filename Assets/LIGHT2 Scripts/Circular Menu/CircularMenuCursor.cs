@@ -42,6 +42,11 @@ public class CircularMenuCursor : MonoBehaviour
     // May be used to reset the cursor back to its starting postion
     public void SetToParentCoords()
     {
+        if (transform.parent == null)
+        {
+            throw new UnityException("transform must have a parent");
+        }
+
         transform.position = transform.parent.position;
     }
 
