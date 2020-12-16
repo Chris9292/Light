@@ -20,7 +20,7 @@ public static class ExtensionMethods
         // Traverse the hyrierchy until parent with tag is found
         while (targetTransform.parent != null)
         {
-            if (targetTransform.parent.tag == tag)
+            if (targetTransform.tag == tag)
             {
                 transform.parent = targetTransform;
                 return;
