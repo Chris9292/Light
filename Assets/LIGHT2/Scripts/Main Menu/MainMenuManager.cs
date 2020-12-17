@@ -1,12 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
-    private bool clickedOnce = false;
-    public float doubleClickTime = 1f;
+    // Main Menu object to be activated ~ must be linked in Editor or null Exception is thrown
     public GameObject mainMenu = null;
+    
+    // bool to emulate a double click
+    private bool clickedOnce = false;
+
+    // allowed time between clicks for double click
+    public float DoubleClickTime = 1f;
+
 
     private void Awake()
     {
@@ -16,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
         }    
     }
 
+    // Sets the Main Menu to active if double clicked or enables double click if clicked once for 'DoubleClickTime'
     public void OpenMainMenu()
     {
         if (clickedOnce == true)
@@ -28,10 +34,11 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    // Sets the clickedOnce bool to true for doubleClickTime seconds
     IEnumerator ClickedOnce()
     {
         clickedOnce = true;
-        yield return new WaitForSeconds(doubleClickTime);
+        yield return new WaitForSeconds(DoubleClickTime);
         clickedOnce = false;
     }
 }
