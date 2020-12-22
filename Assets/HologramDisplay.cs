@@ -8,7 +8,8 @@ public class HologramDisplay : MonoBehaviour
     //Transform DisplayTransform = Display.transform;
     public int CurrentHolo = 0;
 
-    void Start(){
+//change to onEnable
+    private void OnEnable(){
         //Display = GameObject.FindGameObjectWithTag("HologramPlate);
         Display = transform.GetChild(0).gameObject;
 
