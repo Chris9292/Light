@@ -15,7 +15,7 @@ public class DebugWindow : MonoBehaviour
     TextMeshPro textMeshPro;
 
     // Use this for initialization
-    void Awake()
+    private void Awake()
     {
         textMeshPro = gameObject.GetComponent<TextMeshPro>();
     }

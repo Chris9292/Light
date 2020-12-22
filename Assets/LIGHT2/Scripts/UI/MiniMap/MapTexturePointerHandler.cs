@@ -1,5 +1,6 @@
 ﻿using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Input;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -37,22 +38,18 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         // Get the global spawn position
         Vector3 spawnPosition = MiniMapCamera.ScreenToWorldPoint(pixelPosition);
 
-        CreateSphere(spawnPosition);
+        // TODO: 1st created sphere lags as hell (might have to do with Resources.Load)
+        new Task(() => { CreateSphere(spawnPosition); }).Start();
 
         Debug.Log("I was put down here: " + spawnPosition.ToString("F3"));
     }
 
     public void OnPointerDragged(MixedRealityPointerEventData eventData)
     {
-        // Do nothing
+        // TODO: Move map arround
     }
 
     public void OnPointerUp(MixedRealityPointerEventData eventData)
-    {
-        // Do nothing
-    }
-
-    private void Update()
     {
         // Do nothing
     }
