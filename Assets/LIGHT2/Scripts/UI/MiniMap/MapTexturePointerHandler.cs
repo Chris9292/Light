@@ -38,8 +38,8 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         // Get the global spawn position
         Vector3 spawnPosition = MiniMapCamera.ScreenToWorldPoint(pixelPosition);
 
-        // TODO: 1st created sphere lags as hell (might have to do with Resources.Load)
-        new Task(() => { CreateSphere(spawnPosition); }).Start();
+        // TODO: 1st created sphere lags as hell
+        CreateSphere(spawnPosition);
 
         Debug.Log("I was put down here: " + spawnPosition.ToString("F3"));
     }
