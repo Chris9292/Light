@@ -1,7 +1,7 @@
 ﻿using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 
-public class BoxMenuManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     // Distance from the user when the object is enabled
     public float SpawnDistanceFromUser = 2f;
