@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Camera))]
 public class MiniMapCamera : MonoBehaviour
 {
+    private Camera mainCamera = null;
     // gameObject's Camera Component
     private Camera camera = null;
     // The ZoomIn/ZoomOut speed
@@ -14,9 +15,16 @@ public class MiniMapCamera : MonoBehaviour
 
     private void Awake()
     {
+        mainCamera = Camera.main;
         camera = gameObject.GetComponent<Camera>();
         MustZoomIn = false;
         MustZoomOut = false;
+    }
+
+    private void OnEnable()
+    {
+        // Set this camera directly above the main camera
+        transform.position = new Vector3(mainCamera.transform.position.x, transform.position.y, mainCamera.transform.position.z);
     }
     private void ZoomIn()
     {
