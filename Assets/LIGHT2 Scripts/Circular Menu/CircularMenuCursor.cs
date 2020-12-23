@@ -46,6 +46,7 @@ public class CircularMenuCursor : MonoBehaviour
         {
             throw new UnityException("transform must have a parent");
         }
+
         transform.position = transform.parent.position;
     }
 

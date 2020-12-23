@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - CircularMenuSelection
-  - MainMenu
-  - MiniMapCamera
   layers:
   - Default
   - TransparentFX
@@ -16,7 +14,7 @@ TagManager:
   - UI
   - 
   - 
-  - MiniMap
+  - 
   - 
   - 
   - 
