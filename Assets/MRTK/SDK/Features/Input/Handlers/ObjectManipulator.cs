@@ -208,6 +208,17 @@ namespace Microsoft.MixedReality.Toolkit.UI
             set => scaleLerpTime = value;
         }
 
+        // LIGHT2 variables
+        [SerializeField]
+        [Tooltip("Custom LIGHT2 variable. Changes the rotation of the manipulation")]
+        private Vector3 light2_Rotation = Vector3.zero;
+
+        public Vector3 LIGHT2_Rotation
+        {
+            get => LIGHT2_Rotation;
+            set => LIGHT2_Rotation = value;
+        }
+
         #endregion Serialized Fields
 
         #region Event handlers
@@ -679,6 +690,7 @@ namespace Microsoft.MixedReality.Toolkit.UI
         {
             if (rigidBody == null)
             {
+                targetTransform.Position = Quaternion.Euler(light2_Rotation) * targetTransform.Position;
                 HostTransform.position = SmoothTo(HostTransform.position, targetTransform.Position, moveLerpTime);
                 HostTransform.rotation = SmoothTo(HostTransform.rotation, targetTransform.Rotation, rotateLerpTime);
                 HostTransform.localScale = SmoothTo(HostTransform.localScale, targetTransform.Scale, scaleLerpTime);
