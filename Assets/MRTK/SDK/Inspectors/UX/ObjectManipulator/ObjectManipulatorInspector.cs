@@ -41,9 +41,6 @@ namespace Microsoft.MixedReality.Toolkit.Editor
         private SerializedProperty onHoverEntered;
         private SerializedProperty onHoverExited;
 
-        // LIGHT2 variables
-        private SerializedProperty light2_Rotation;
-
         bool oneHandedFoldout = true;
         bool twoHandedFoldout = true;
         bool constraintsFoldout = true;
@@ -79,9 +76,6 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             onManipulationEnded = serializedObject.FindProperty("onManipulationEnded");
             onHoverEntered = serializedObject.FindProperty("onHoverEntered");
             onHoverExited = serializedObject.FindProperty("onHoverExited");
-
-            // LIGHT2
-            light2_Rotation = serializedObject.FindProperty("light2_Rotation");
         }
 
         public override void OnInspectorGUI()
@@ -89,9 +83,6 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             EditorGUILayout.PropertyField(hostTransform);
             EditorGUILayout.PropertyField(manipulationType);
             EditorGUILayout.PropertyField(allowFarManipulation);
-            
-            // LIGHT2
-            EditorGUILayout.PropertyField(light2_Rotation);
 
             var handedness = (ManipulationHandFlags)manipulationType.intValue;
 
