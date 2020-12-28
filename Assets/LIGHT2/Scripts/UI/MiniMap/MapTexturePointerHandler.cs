@@ -10,8 +10,17 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
 
     private Camera mainCamera = null;
     private Vector3 startingDragPosition;
-    public float DragSpeed = 0.2f;
-    
+    public float DragSpeed = 0.3f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public float LerpTime = 0.01f;
+
+    public float DragThreshold = 0.008f;
+    Vector3 StartLerpPosition;
+    Vector3 EndLerpPosition;
+
     // TODO: more concept required
     public bool CanPlace { get; set; }
     
@@ -73,11 +82,20 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
             Vector3 dragDirection = new Vector3(-tempDragDirection.x, 0f, -tempDragDirection.y).normalized;
 
             // Move the MiniMapCamera to drag direction
-            MiniMapCamera.transform.position += (dragDirection * DragSpeed);
+            // MiniMapCamera.transform.position += (dragDirection * DragSpeed);
 
-            // Set a new startingDragPoint
-            startingDragPosition = dragPosition;
-        }
+            Vector3 StartLerpPosition = MiniMapCamera.transform.position;
+            Vector3 EndLerpPosition = MiniMapCamera.transform.position + (dragDirection * DragSpeed);
+
+            if (Vector3.Distance(startingDragPosition, dragPosition) > DragThreshold)
+            {
+                //MiniMapCamera.transform.position = Vector3.Lerp(StartLerpPosition, EndLerpPosition, LerpTime);
+
+                MiniMapCamera.transform.position += (dragDirection * DragSpeed);
+                // Set a new startingDragPoint
+                startingDragPosition = dragPosition;
+            }
+        }   
     }
 
     public void OnPointerUp(MixedRealityPointerEventData eventData)

@@ -2012,7 +2012,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483703
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   maxGazeCollisionDistance: 10
   raycastLayerMasks:
   - serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 51
   stabilizer:
     storedStabilitySamples: 60
   gazeTransform: {fileID: 0}
@@ -3289,8 +3289,6 @@ GameObject:
   - component: {fileID: 1720033518}
   - component: {fileID: 1720033517}
   - component: {fileID: 1720033520}
-  - component: {fileID: 1720033521}
-  - component: {fileID: 1720033522}
   m_Layer: 0
   m_Name: Map Texture Quad
   m_TagString: Untagged
@@ -3386,65 +3384,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnHeight: 1
-  DragSpeed: 0.2
---- !u!114 &1720033521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720033515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e736ec19b1c5543a9bb27c150f94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFocusRequired: 1
-  MarkEventsAsUsed: 0
-  OnPointerDown:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerUp:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerClicked:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerDragged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1720033522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720033515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
-  InputActionId: 0
-  isGlobal: 0
-  Dimensions: 1
-  dimensionIndex: 0
-  startDimensionIndex: 0
-  CanSelect: 1
-  CanDeselect: 1
-  VoiceCommand: 
-  voiceRequiresFocus: 1
-  profiles:
-  - Target: {fileID: 0}
-    Themes:
-    - {fileID: 0}
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  Events: []
-  resetOnDestroy: 0
-  enabledOnStart: 1
+  DragSpeed: 0.4
+  LerpTime: 0.001
+  DragThreshold: 0.008
 --- !u!1 &1876642855
 GameObject:
   m_ObjectHideFlags: 0
