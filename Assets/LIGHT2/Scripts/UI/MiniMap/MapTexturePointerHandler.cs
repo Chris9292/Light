@@ -12,7 +12,11 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     private Camera mainCamera = null;
 
     // The height where the objects will be placed when clicking the MiniMap
-    public float spawnHeight = 1f;
+    public float spawnHeight = 0f;
+
+    // When set to true the MiniMap is in placing mode
+    // When set to false the MiniMap is in moving mode
+    public bool CanPlace { get; set; }
 
 
     // Move logic
@@ -35,7 +39,6 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     private Vector3 StartLerpPosition;
     private Vector3 EndLerpPosition;
 
-    public bool CanPlace { get; set; }
     
     private void OnEnable()
     {

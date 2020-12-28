@@ -3383,7 +3383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b9cb3eee06417408b4dc16e8667cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnHeight: 1
+  spawnHeight: 0
   DragSpeed: 0.4
   LerpTime: 0.01
   DragThreshold: 0.008
