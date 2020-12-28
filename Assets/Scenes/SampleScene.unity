@@ -3385,7 +3385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnHeight: 1
   DragSpeed: 0.4
-  LerpTime: 0.001
+  LerpTime: 0.01
   DragThreshold: 0.008
 --- !u!1 &1876642855
 GameObject:

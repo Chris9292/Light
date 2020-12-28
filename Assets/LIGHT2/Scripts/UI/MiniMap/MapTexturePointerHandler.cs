@@ -2,26 +2,39 @@
 using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 
-
+/// <summary>
+/// The map has 2 modes. Either movement by dragging or returning/placing world coordinates by clicking.
+/// </summary>
 public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandler
 {
+    // Cameras
     private Camera MiniMapCamera = null;
+    private Camera mainCamera = null;
+
+    // The height where the objects will be placed when clicking the MiniMap
     public float spawnHeight = 1f;
 
-    private Camera mainCamera = null;
-    private Vector3 startingDragPosition;
+
+    // Move logic
+
+    // The camera movement speed
     public float DragSpeed = 0.3f;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    // The time spent lerping
     public float LerpTime = 0.01f;
 
+    // The hand movement threshold in meters to apply any kind of movement
     public float DragThreshold = 0.008f;
-    Vector3 StartLerpPosition;
-    Vector3 EndLerpPosition;
+    
+    private Vector3 StartDragPosition;
+    private Vector3 EndDragPosition;
 
-    // TODO: more concept required
+    private bool IsLerping = false;
+    private float TimeStartedLerping = 0f;
+
+    private Vector3 StartLerpPosition;
+    private Vector3 EndLerpPosition;
+
     public bool CanPlace { get; set; }
     
     private void OnEnable()
@@ -49,10 +62,6 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
             throw new UnityException("Failed to get MainCamera");
         }     
     }
-    public void OnPointerClicked(MixedRealityPointerEventData eventData)
-    {
-        // Do nothing
-    }
 
     public void OnPointerDown(MixedRealityPointerEventData eventData)
     {
@@ -62,8 +71,8 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         }
         else
         {
-            // See below OnPointerDragged
-            startingDragPosition = eventData.Pointer.Position;
+            // Set the starting drag position for our move
+            StartDragPosition = eventData.Pointer.Position;
         }
     }
 
@@ -72,33 +81,22 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         if (!CanPlace)
         {
             // Get the drag pointer position
-            Vector3 dragPosition = eventData.Pointer.Position;
-
-            // Get the drag direction relative to the main camera
-            Vector3 tempDragDirection = mainCamera.transform.InverseTransformPoint(dragPosition) - mainCamera.transform.InverseTransformPoint(startingDragPosition);
-
-            // Rotate the tempDragDirection according to a top down view and set its y to 0 (not sure if necessary) and normalize it
-            // Better way would probably be to multiply with MiniMapCamera rotation
-            Vector3 dragDirection = new Vector3(-tempDragDirection.x, 0f, -tempDragDirection.y).normalized;
-
-            // Move the MiniMapCamera to drag direction
-            // MiniMapCamera.transform.position += (dragDirection * DragSpeed);
-
-            Vector3 StartLerpPosition = MiniMapCamera.transform.position;
-            Vector3 EndLerpPosition = MiniMapCamera.transform.position + (dragDirection * DragSpeed);
-
-            if (Vector3.Distance(startingDragPosition, dragPosition) > DragThreshold)
+            EndDragPosition = eventData.Pointer.Position;
+      
+            // Start moving only when exceeding a given threshold to make the object more stable
+            if (Vector3.Distance(StartDragPosition, EndDragPosition) > DragThreshold)
             {
-                //MiniMapCamera.transform.position = Vector3.Lerp(StartLerpPosition, EndLerpPosition, LerpTime);
-
-                MiniMapCamera.transform.position += (dragDirection * DragSpeed);
-                // Set a new startingDragPoint
-                startingDragPosition = dragPosition;
+                StartLerping();
+                StartDragPosition = EndDragPosition;
             }
         }   
     }
 
     public void OnPointerUp(MixedRealityPointerEventData eventData)
+    {
+        // Do nothing
+    }
+    public void OnPointerClicked(MixedRealityPointerEventData eventData)
     {
         // Do nothing
     }
@@ -127,5 +125,40 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
 
         // Talk about it
         Debug.Log("I was DOwN pUT here: " + spawnPosition.ToString("F3"));
+    }
+
+    // Begin our lerping motion
+    private void StartLerping()
+    {
+        IsLerping = true;
+        TimeStartedLerping = Time.time;
+
+
+        // Get the drag direction relative to the main camera
+        Vector3 tempDragDirection = mainCamera.transform.InverseTransformPoint(EndDragPosition) - mainCamera.transform.InverseTransformPoint(StartDragPosition);
+
+        // Rotate the tempDragDirection according to a top down view and set its y to 0 (not sure if necessary) and normalize it
+        // Better way would probably be to multiply with MiniMapCamera rotation
+        Vector3 dragDirection = new Vector3(-tempDragDirection.x, 0f, -tempDragDirection.y).normalized;
+
+        StartLerpPosition = MiniMapCamera.transform.position;
+        EndLerpPosition = MiniMapCamera.transform.position + (dragDirection * DragSpeed);
+    }
+
+    private void FixedUpdate()
+    {
+        // If we are lerping apply the new lerp position in each frame
+        if (IsLerping)
+        {
+            float timeSinceStarted = Time.time - TimeStartedLerping;
+            float percentageComplete = timeSinceStarted / LerpTime;
+
+            MiniMapCamera.transform.position = Vector3.Lerp(StartLerpPosition, EndLerpPosition, percentageComplete);
+
+            if (percentageComplete >= 1f)
+            {
+                IsLerping = false;
+            }
+        }
     }
 }
