@@ -1,5 +1,4 @@
 ﻿using Microsoft.MixedReality.Toolkit;
-using System;
 using TMPro;
 using UnityEngine;
 

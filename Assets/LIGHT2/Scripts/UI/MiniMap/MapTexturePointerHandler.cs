@@ -39,7 +39,13 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     private Vector3 StartLerpPosition;
     private Vector3 EndLerpPosition;
 
-    
+    // A tasty donut
+    private GameObject DoNut;
+
+    private void Awake()
+    {
+        DoNut = Resources.Load("DO NUT") as GameObject;
+    }
     private void OnEnable()
     {
         CanPlace = false;
@@ -124,10 +130,10 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         Vector3 spawnPosition = MiniMapCamera.ScreenToWorldPoint(pixelPosition);
 
         // Instantiate a DONUT
-        GameObject.Instantiate(Resources.Load("DO NUT"), spawnPosition, mainCamera.transform.rotation);
+        GameObject.Instantiate(DoNut, spawnPosition, mainCamera.transform.rotation);
 
         // Talk about it
-        Debug.Log("I was DOwN pUT here: " + spawnPosition.ToString("F3"));
+        Debug.Log("I was DOwN pUT here: " + spawnPosition.ToString("F2"));
     }
 
     // Begin our lerping motion
