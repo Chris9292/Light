@@ -5,7 +5,7 @@ public class MiniMapCamera : MonoBehaviour
 {
     private Camera mainCamera = null;
     // gameObject's Camera Component
-    private Camera camera = null;
+    private Camera _miniMapCamera = null;
     // The ZoomIn/ZoomOut speed
     public float ZoomSpeed = 0.06f;
     // When set to true camera will ZoomIn in each update
@@ -16,7 +16,7 @@ public class MiniMapCamera : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        camera = gameObject.GetComponent<Camera>();
+        _miniMapCamera = gameObject.GetComponent<Camera>();
         MustZoomIn = false;
         MustZoomOut = false;
     }
@@ -28,12 +28,12 @@ public class MiniMapCamera : MonoBehaviour
     }
     private void ZoomIn()
     {
-        camera.orthographicSize -= ZoomSpeed;
+        _miniMapCamera.orthographicSize -= ZoomSpeed;
     }
 
     private void ZoomOut()
     {
-        camera.orthographicSize += ZoomSpeed;
+        _miniMapCamera.orthographicSize += ZoomSpeed;
     }
     private void Update()
     {
