@@ -3,12 +3,19 @@
     {
       "name": "Vuforia",
       "url": "https://registry.packages.developer.vuforia.com/",
-      "scopes": [
-        "com.ptc.vuforia"
-      ]
-    }
+      "scopes":["com.ptc.vuforia"]
+      
+    },
+	
+	{
+        "name": "Microsoft Mixed Reality",
+        "url": "https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry/",
+        "scopes": ["com.microsoft.mixedreality"]
+      }
   ],
   "dependencies": {
+	"com.microsoft.mixedreality.webrtc": "2.0.2",
+    "com.microsoft.mixedreality.webrtc.samples": "2.0.2",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.2.1",
