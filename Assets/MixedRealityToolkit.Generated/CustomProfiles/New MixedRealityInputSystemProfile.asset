@@ -67,7 +67,7 @@ MonoBehaviour:
     componentName: Input Simulation Service
     priority: 0
     runtimePlatform: 208
-    deviceManagerProfile: {fileID: 11400000, guid: fbf688bd9585bc44d815f623c22bcc6e,
+    deviceManagerProfile: {fileID: 11400000, guid: 427bea38105dc76429738a52f25940ce,
       type: 2}
   - componentType:
       reference: Microsoft.MixedReality.Toolkit.WindowsMixedReality.Input.WindowsMixedRealityEyeGazeDataProvider,
@@ -100,7 +100,7 @@ MonoBehaviour:
     type: 2}
   inputActionRulesProfile: {fileID: 11400000, guid: 03945385d89102f41855bc8f5116b199,
     type: 2}
-  pointerProfile: {fileID: 11400000, guid: 48aa63a9725047b28d4137fd0834bc31, type: 2}
+  pointerProfile: {fileID: 11400000, guid: bd65e41f1a4aaf64dbbff0dc7f970137, type: 2}
   gesturesProfile: {fileID: 11400000, guid: 06b96abe0646eb042b98e4a39ad8599f, type: 2}
   speechCommandsProfile: {fileID: 11400000, guid: 1dbbdfe7bef269d41b217f777d12b94d,
     type: 2}
