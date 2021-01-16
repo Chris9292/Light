@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CircularMenuSelections
+  - CircularMenuSelection
   - MainMenu
   - MiniMapCamera
   layers:
@@ -16,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - Wall
   - MiniMap
+  - 
   - 
   - 
   - 
