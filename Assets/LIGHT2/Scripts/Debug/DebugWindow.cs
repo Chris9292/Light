@@ -1,14 +1,20 @@
-﻿using System;
+﻿using Microsoft.MixedReality.Toolkit;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshPro))]
 public class DebugWindow : MonoBehaviour
 {
+    // Logs the gaze game object
+    public bool GazeLog = false;
+    // Time between each log
+    public float TimeBetweenUpdates = 3f;
+    private float Counter = 0f;
+
     TextMeshPro textMeshPro;
 
     // Use this for initialization
-    void Awake()
+    private void Awake()
     {
         textMeshPro = gameObject.GetComponent<TextMeshPro>();
     }
@@ -34,4 +40,24 @@ public class DebugWindow : MonoBehaviour
             textMeshPro.text += message + "\n";
         }
     }
+
+    // Logs the gaze target if GazeLog is true
+    void LogCurrentGazeTarget()
+    {
+        if (GazeLog && CoreServices.InputSystem.GazeProvider.GazeTarget)
+        {
+            Debug.Log("User gaze is currently over game object: "
+                + CoreServices.InputSystem.GazeProvider.GazeTarget);
+        }
+    }
+
+    private void Update()
+    {
+        if (Counter >= TimeBetweenUpdates)
+        {
+            LogCurrentGazeTarget();
+            Counter -= TimeBetweenUpdates;
+        }
+        Counter += Time.deltaTime;
+    }    
 }
