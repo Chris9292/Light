@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1895805979058336594}
   m_Layer: 0
-  m_Name: DO NUT 1
+  m_Name: DO NUT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 9077532099406673857}
   - component: {fileID: 2558745201672210568}
   - component: {fileID: 8347515141074885710}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: DoNut Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
