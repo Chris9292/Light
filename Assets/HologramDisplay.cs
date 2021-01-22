@@ -10,10 +10,11 @@ public class HologramDisplay : MonoBehaviour
 
 //change to onEnable
     private void OnEnable(){
-        //Display = GameObject.FindGameObjectWithTag("HologramPlate);
-        Display = transform.GetChild(0).gameObject;
+        //Display = GameObject.FindGameObjectWithTag("HologramPlate");
+        //Display = transform.GetChild(0).gameObject;
+        Display = GameObject.Find("HologramPlate");
 
-         //First Hologram in Hierarchy Enabled ; All the rest disabled
+        //First Hologram in Hierarchy Enabled ; All the rest disabled
         for (int i=0; i<=Display.transform.childCount-1; i++){
         Display.transform.GetChild(i).gameObject.SetActive(false);
         }
