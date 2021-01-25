@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2460052626046967599}
   - component: {fileID: 3062601121075748143}
   - component: {fileID: 3062601121075748144}
-  - component: {fileID: 4493177384632145827}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -146,30 +145,7 @@ MonoBehaviour:
   debugEnabled: 1
   onPlacingStarted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4493177384632145827}
-        m_MethodName: NoParent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPlacingStopped:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4493177384632145827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3062601121075748145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cec56a98ebbbf4390d2ee10ad9bc82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
