@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8210420042118561024}
   - component: {fileID: 5039598528714457483}
   - component: {fileID: 5039598528714457480}
+  - component: {fileID: -3658584162263507926}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -146,18 +147,19 @@ MonoBehaviour:
   debugEnabled: 1
   onPlacingStarted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2100033525085354207}
-        m_MethodName: SetParent
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPlacingStopped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-3658584162263507926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039598528714457481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49cec56a98ebbbf4390d2ee10ad9bc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

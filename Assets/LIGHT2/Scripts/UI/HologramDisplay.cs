@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,76 +8,102 @@ public class HologramDisplay : MonoBehaviour
     public GameObject Display;
     public string[] PlaceableObjects;
     private GameObject[] gameObjects;
-    //Transform DisplayTransform = Display.transform;
     public int CurrentHolo = 0;
 
     private void Awake()
     {
+        // Load the objects from resources defined in PlaceableObjects Array
+        // Failing to find an objects throws an error
         gameObjects = new GameObject[PlaceableObjects.Length];
         for (int i = 0; i < PlaceableObjects.Length; i++)
         {
             gameObjects[i] = Resources.Load(PlaceableObjects[i]) as GameObject;
-            GameObject.Instantiate(gameObjects[i], Display.transform, false);
+
+            if (gameObjects[i] == null)
+                throw new UnityException("No prefab named '" + PlaceableObjects[i] + "' found in Resources");
         }
+        // Instantiate the objects
+        RefreshPlaceableObjects();
     }
 
-//change to onEnable
     private void OnEnable()
     {
-         //First Hologram in Hierarchy Enabled ; All the rest disabled
-        for (int i=0; i<=Display.transform.childCount-1; i++){
-        Display.transform.GetChild(i).gameObject.SetActive(false);
+        //First Hologram in Hierarchy Enabled ; All the rest disabled
+        for (int i=0; i<=Display.transform.childCount-1; i++)
+        {
+            Display.transform.GetChild(i).gameObject.SetActive(false);
         }
+        
         Display.transform.GetChild(CurrentHolo).gameObject.SetActive(true);
     }
 
-    
-
-    public void DisplayNext(){
+    public void DisplayNext()
+    {
         Display.transform.GetChild(CurrentHolo).gameObject.SetActive(false);
 
-        CurrentHolo += 1;
+        CurrentHolo ++ ;
         if (CurrentHolo >= Display.transform.childCount)
-        {
-        CurrentHolo = 0;
-            }
+            CurrentHolo = 0;
+
          Display.transform.GetChild(CurrentHolo).gameObject.SetActive(true);
     
     } 
 
-    public void DisplayPrevious(){
+    public void DisplayPrevious()
+    {
         Display.transform.GetChild(CurrentHolo).gameObject.SetActive(false);
 
-        CurrentHolo -= 1;
+        CurrentHolo --;
         if (CurrentHolo < 0)
-        {
-        CurrentHolo = Display.transform.childCount - 1;
-            }
+            CurrentHolo = Display.transform.childCount - 1;
+
          Display.transform.GetChild(CurrentHolo).gameObject.SetActive(true);
     }
 
 
-    private void Update()
+/*    private void Update()
     {
+        // If something has been placed close the menu and refresh the placeable objects
         if (Display.transform.childCount < gameObjects.Length)
         {
-            Debug.Log("c");
-            InstantiatePlaceableObjects();
             gameObject.SetActive(false);
+            RefreshPlaceableObjects();
         }
 
-    }
+    }*/
 
-    private void InstantiatePlaceableObjects()
+    // Destroys every placeable object and reinstantiates them
+    private void RefreshPlaceableObjects()
     {
         for (int i = 0; i < Display.transform.childCount; i++)
         {
-            Debug.Log("a");
-            Destroy(Display.transform.GetChild(i));
+            Destroy(Display.transform.GetChild(i).gameObject);
         }
         for (int i = 0; i < PlaceableObjects.Length; i++)
         {
-            GameObject.Instantiate(gameObjects[i], Display.transform, false);
+            GameObject instantiatedObject = Instantiate(gameObjects[i], Display.transform, false);
+
+           if (instantiatedObject.TryGetComponent(out Collider collider))
+                collider.enabled = false;
+        }
+    }
+
+    // TODO: Scale + Instantiate new Object -> Do not refresh
+    public void PlaceHologram()
+    {
+        Transform hologramToPlace = Display.transform.GetChild(CurrentHolo);
+        hologramToPlace.parent = null;
+
+        if (!hologramToPlace.gameObject.TryGetComponent(out TapToPlace tapToPlace))
+            throw new UnityException(hologramToPlace + " has no TapToPlace Component");
+        else
+        {
+
+            gameObject.SetActive(false);
+            tapToPlace.GetComponent<Collider>().enabled = true;
+            hologramToPlace.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            tapToPlace.StartPlacement();
+            RefreshPlaceableObjects();
         }
     }
 }
