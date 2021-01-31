@@ -504,7 +504,6 @@ GameObject:
   m_Component:
   - component: {fileID: 523844263}
   - component: {fileID: 523844264}
-  - component: {fileID: 523844262}
   - component: {fileID: 523844265}
   m_Layer: 0
   m_Name: GameManager
@@ -513,21 +512,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &523844262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523844261}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bff0e10a1bd74c74fb104173445d4e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitLayers:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!4 &523844263
 Transform:
   m_ObjectHideFlags: 0
@@ -561,6 +545,8 @@ MonoBehaviour:
   vGridWorldSize: {x: 30, y: 30}
   fNodeRadius: 0.5
   fDistanceBetweenNodes: 0
+  PathObject: {fileID: 4306154469845953507, guid: 80b52ba125caaf344a4a214e8c5b3c63,
+    type: 3}
 --- !u!114 &523844265
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,9 +12,10 @@ public class Grid : MonoBehaviour
     public float fDistanceBetweenNodes;//The distance that the squares will spawn from eachother.
 
     Node[,] NodeArray;//The array of nodes that the A Star algorithm uses.
+
     public List<Node> FinalPath;//The completed path that the red line will be drawn along
 
-
+    public GameObject PathObject;
     float fNodeDiameter;//Twice the amount of the radius (Set in the start function)
     int iGridSizeX, iGridSizeY;//Size of the Grid in Array units.
 
@@ -27,6 +28,7 @@ public class Grid : MonoBehaviour
         CreateGrid();//Draw the grid
     }
 
+
     void CreateGrid()
     {
         NodeArray = new Node[iGridSizeX, iGridSizeY];//Declare the array of nodes.
@@ -35,7 +37,7 @@ public class Grid : MonoBehaviour
         {
             for (int y = 0; y < iGridSizeY; y++)//Loop through the array of nodes
             {
-                Vector3 worldPoint = bottomLeft + Vector3.right * (x * fNodeDiameter + fNodeRadius) + Vector3.forward * (y * fNodeDiameter + fNodeRadius);//Get the world co ordinates of the bottom left of the graph
+                Vector3 worldPoint = bottomLeft + Vector3.right * (x * fNodeDiameter + fNodeRadius) + Vector3.forward * (y * fNodeDiameter + fNodeRadius);//Get the world coordinates of the bottom left of the graph
                 bool Wall = true;//Make the node a wall
 
                 //If the node is not being obstructed
@@ -173,4 +175,26 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    // Function that instantiates objects on FinalPath. The user should follow the objects.
+    public void showPathObjects()
+    {
+        if (FinalPath != null)//If the final path is not empty
+        {
+            foreach(Node n in FinalPath)
+            {
+                Instantiate(PathObject, n.vPosition, Quaternion.identity);
+            }
+        }
+    }
+
+    public void destroyPathObjects()
+    {
+        foreach(GameObject PathObject in GameObject.FindGameObjectsWithTag("PathObject"))
+        {
+            Destroy(PathObject);
+        }
+    }
 }
+
+

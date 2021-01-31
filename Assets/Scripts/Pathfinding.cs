@@ -13,12 +13,14 @@ public class Pathfinding : MonoBehaviour {
         GridReference = GetComponent<Grid>();//Get a reference to the game manager
     }
 
-    private void Update()//Every frame
+
+    private void Update()
     {
-        FindPath(StartPosition.position, TargetPosition.position);//Find a path to the goal
+        FindPath(StartPosition.position, TargetPosition.position);
     }
 
-    void FindPath(Vector3 a_StartPos, Vector3 a_TargetPos)
+    //FindPath every 3 seconds
+    private void FindPath(Vector3 a_StartPos, Vector3 a_TargetPos)
     {
         Node StartNode = GridReference.NodeFromWorldPoint(a_StartPos);//Gets the node closest to the starting position
         Node TargetNode = GridReference.NodeFromWorldPoint(a_TargetPos);//Gets the node closest to the target position
@@ -66,7 +68,6 @@ public class Pathfinding : MonoBehaviour {
                     }
                 }
             }
-
         }
     }
 
@@ -85,7 +86,10 @@ public class Pathfinding : MonoBehaviour {
 
         FinalPath.Reverse();//Reverse the path to get the correct order
 
+        
         GridReference.FinalPath = FinalPath;//Set the final path
+        GridReference.destroyPathObjects();
+        GridReference.showPathObjects();
 
     }
 
