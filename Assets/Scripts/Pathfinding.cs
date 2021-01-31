@@ -13,17 +13,17 @@ public class Pathfinding : MonoBehaviour {
         GridReference = GetComponent<Grid>();//Get a reference to the game manager
     }
 
-
-    private void Update()
+    private void Start()
     {
-        FindPath(StartPosition.position, TargetPosition.position);
+        InvokeRepeating("FindPath", 2f, 2f);
     }
+    
 
     //FindPath every 3 seconds
-    private void FindPath(Vector3 a_StartPos, Vector3 a_TargetPos)
+    private void FindPath()
     {
-        Node StartNode = GridReference.NodeFromWorldPoint(a_StartPos);//Gets the node closest to the starting position
-        Node TargetNode = GridReference.NodeFromWorldPoint(a_TargetPos);//Gets the node closest to the target position
+        Node StartNode = GridReference.NodeFromWorldPoint(StartPosition.position);//Gets the node closest to the starting position
+        Node TargetNode = GridReference.NodeFromWorldPoint(TargetPosition.position);//Gets the node closest to the target position
 
         List<Node> OpenList = new List<Node>();//List of nodes for the open list
         HashSet<Node> ClosedList = new HashSet<Node>();//Hashset of nodes for the closed list
