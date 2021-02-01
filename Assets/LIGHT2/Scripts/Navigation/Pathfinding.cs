@@ -75,6 +75,7 @@ public class Pathfinding : MonoBehaviour {
 
     void GetFinalPath(Node a_StartingNode, Node a_EndNode)
     {
+        Debug.Log("Mpike");
         List<Node> FinalPath = new List<Node>();//List to hold the path sequentially 
         Node CurrentNode = a_EndNode;//Node to store the current node being checked
 
@@ -92,7 +93,7 @@ public class Pathfinding : MonoBehaviour {
         GridReference.showPathObjects();
 
     }
-
+    // h cost!
     int GetManhattenDistance(Node a_nodeA, Node a_nodeB)
     {
         int ix = Mathf.Abs(a_nodeA.iGridX - a_nodeB.iGridX);//x1-x2
