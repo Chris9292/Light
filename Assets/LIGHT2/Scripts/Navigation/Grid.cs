@@ -142,39 +142,39 @@ public class Grid : MonoBehaviour
 
 
     //Function that draws the wireframe
-    private void OnDrawGizmos()
-    {
+    // private void OnDrawGizmos()
+    // {
 
-        Gizmos.DrawWireCube(transform.position, new Vector3(vGridWorldSize.x, 1, vGridWorldSize.y));//Draw a wire cube with the given dimensions from the Unity inspector
+    //     Gizmos.DrawWireCube(transform.position, new Vector3(vGridWorldSize.x, 1, vGridWorldSize.y));//Draw a wire cube with the given dimensions from the Unity inspector
 
-        if (NodeArray != null)//If the grid is not empty
-        {
-            foreach (Node n in NodeArray)//Loop through every node in the grid
-            {
-                if (n.bIsWall)//If the current node is a wall node
-                {
-                    Gizmos.color = Color.white;//Set the color of the node
-                }
-                else
-                {
-                    Gizmos.color = Color.yellow;//Set the color of the node
-                }
-
-
-                if (FinalPath != null)//If the final path is not empty
-                {
-                    if (FinalPath.Contains(n))//If the current node is in the final path
-                    {
-                        Gizmos.color = Color.red;//Set the color of that node
-                    }
-
-                }
+    //     if (NodeArray != null)//If the grid is not empty
+    //     {
+    //         foreach (Node n in NodeArray)//Loop through every node in the grid
+    //         {
+    //             if (n.bIsWall)//If the current node is a wall node
+    //             {
+    //                 Gizmos.color = Color.white;//Set the color of the node
+    //             }
+    //             else
+    //             {
+    //                 Gizmos.color = Color.yellow;//Set the color of the node
+    //             }
 
 
-                Gizmos.DrawCube(n.vPosition, Vector3.one * (fNodeDiameter - fDistanceBetweenNodes));//Draw the node at the position of the node.
-            }
-        }
-    }
+    //             if (FinalPath != null)//If the final path is not empty
+    //             {
+    //                 if (FinalPath.Contains(n))//If the current node is in the final path
+    //                 {
+    //                     Gizmos.color = Color.red;//Set the color of that node
+    //                 }
+
+    //             }
+
+
+    //             Gizmos.DrawCube(n.vPosition, Vector3.one * (fNodeDiameter - fDistanceBetweenNodes));//Draw the node at the position of the node.
+    //         }
+    //     }
+    // }
 
     // Function that instantiates objects on FinalPath. The user should follow the objects.
     public void showPathObjects()
