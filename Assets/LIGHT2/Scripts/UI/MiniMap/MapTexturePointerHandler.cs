@@ -10,6 +10,9 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     // Cameras
     private Camera MiniMapCamera = null;
     private Camera mainCamera = null;
+    
+    // The destination used by the navigation module
+    public Transform Destination;
 
     // The height where the objects will be placed when clicking the MiniMap
     public float spawnHeight = 0f;
@@ -76,7 +79,8 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     {
         if (CanPlace)
         {
-            DONUT_Onclick();
+            Destination.position = GetClickPosition(Destination.position.y);
+            //DONUT_Onclick();
         }
         else
         {
@@ -110,9 +114,10 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         // Do nothing
     }
 
-    private void DONUT_Onclick()
+    // Get the real world position of the click, where Y is the desired height (transform.position.y) of the returned transform
+    private Vector3 GetClickPosition(float Y)
     {
-        // See below
+                // See below
         float offset = 0.5f;
 
         // Get the global position of the hit surface
@@ -124,10 +129,17 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         // Create a pixel Vector3 to pass into the ScreenToWorldMethod
         // The (0,0) point must be in the bottom left corner so we add the offset which for a 1x1 object is 0.5 and we multiply by the pixel width and height
         // Furthermore, the height is defined as the distance from the camera so since we have a top-down camera we define the height as camera.y - spawn height
-        Vector3 pixelPosition = new Vector3((targetPosition.x + offset) * 700, (targetPosition.y + offset) * 500, MiniMapCamera.gameObject.transform.position.y - spawnHeight);
+        Vector3 pixelPosition = new Vector3((targetPosition.x + offset) * 700, (targetPosition.y + offset) * 500, MiniMapCamera.gameObject.transform.position.y - Y);
 
         // Get the global spawn position
         Vector3 spawnPosition = MiniMapCamera.ScreenToWorldPoint(pixelPosition);
+        return spawnPosition;
+    }
+
+    private void DONUT_Onclick()
+    {
+        // Get the global spawn position
+        Vector3 spawnPosition = GetClickPosition(spawnHeight);
 
         // Instantiate a DONUT
         GameObject.Instantiate(DoNut, spawnPosition, mainCamera.transform.rotation);

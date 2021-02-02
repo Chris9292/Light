@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HoloDisplay : MonoBehaviour
 {
-   [SerializeField] private GameObject[] myPrefabs;
+   /*[SerializeField] private GameObject[] myPrefabs;
    [SerializeField] private GameObject thePrefab;
    [SerializeField] private Transform ParentTransform;
    [SerializeField] private Vector3 spawnPos;
@@ -36,6 +36,6 @@ public void SpawnDisplay(){
         }
 }
 
-
+*/
 
 }
