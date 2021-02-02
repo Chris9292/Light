@@ -15,7 +15,7 @@ public class Grid : MonoBehaviour
 
     public List<Node> FinalPath;//The completed path that the red line will be drawn along
 
-    public GameObject PathObject;
+    public List<GameObject> PathObject;
     float fNodeDiameter;//Twice the amount of the radius (Set in the start function)
     int iGridSizeX, iGridSizeY;//Size of the Grid in Array units.
 
@@ -177,20 +177,20 @@ public class Grid : MonoBehaviour
     // }
 
     // Function that instantiates objects on FinalPath. The user should follow the objects.
-    public void showPathObjects()
+    public void createPathObjects(int object_id)
     {
         if (FinalPath != null)//If the final path is not empty
         {
             foreach(Node n in FinalPath)
             {
-                Instantiate(PathObject, n.vPosition, Quaternion.identity);
+                Instantiate(PathObject[object_id], n.vPosition, Quaternion.identity);
             }
         }
     }
 
     public void destroyPathObjects()
     {
-        foreach(GameObject PathObject in GameObject.FindGameObjectsWithTag("PathObject"))
+        foreach(GameObject PathObject in GameObject.FindGameObjectsWithTag("DynamicPathObject"))
         {
             Destroy(PathObject);
         }

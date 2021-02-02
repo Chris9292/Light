@@ -7,7 +7,9 @@ TagManager:
   - CircularMenuSelections
   - MainMenu
   - MiniMapCamera
-  - PathObject
+  - DynamicPathObject
+  - Undefined
+  - StaticPathObject
   layers:
   - Default
   - TransparentFX
