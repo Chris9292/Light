@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Linq;
 using UnityEngine.Windows.WebCam;
 
@@ -7,8 +6,13 @@ public class PhotoCaptureUtility : MonoBehaviour
 {
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
+    public Renderer savedPhoto;
 
-    // Use this for initialization
+    public void ApplyPhoto()
+    {
+        savedPhoto.material.SetTexture("_MainTex", TakePhoto());
+    }
+
     public Texture2D TakePhoto()
     {
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
