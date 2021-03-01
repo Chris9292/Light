@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
-public class SamplingHologram : MonoBehaviour
+public class SamplingHolo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_Text holoName_TMP;
+    public TMP_Text color_TMP;
+    public TMP_Text numberOfRocks_TMP;
+    public Renderer photo_rend;
 
-    // Update is called once per frame
-    void Update()
+    public void SetHoloData(string holoName, string color, string numberOfRocks, Texture2D photo)
     {
-        
+        holoName_TMP.text = holoName;
+        color_TMP.text = "Color: " + color;
+        numberOfRocks_TMP.text = "Number of Rocks: " + numberOfRocks;
+        photo_rend.material.SetTexture("_MainTex", photo);
     }
 }
