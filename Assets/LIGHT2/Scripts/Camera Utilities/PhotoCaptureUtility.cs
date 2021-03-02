@@ -6,12 +6,6 @@ public class PhotoCaptureUtility : MonoBehaviour
 {
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
-    public Renderer savedPhoto;
-
-    public void ApplyPhoto()
-    {
-        savedPhoto.material.SetTexture("_MainTex", TakePhoto());
-    }
 
     public Texture2D TakePhoto()
     {
