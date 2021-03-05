@@ -11,7 +11,9 @@ public class Metrics : MonoBehaviour
     private float MetabolicRate;
     private void Awake()
     {
-      //GridReference = GetComponent<Grid>;  
+        //GridReference = GetComponent<Grid>;  
+        slope = 1; //degrees 
+
     }
 
     // Update is called once per frame
