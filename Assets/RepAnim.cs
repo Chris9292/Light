@@ -12,14 +12,20 @@ public class RepAnim : MonoBehaviour
     }
 
    
-    public void ClickAnim()
+    public void NextAnim()
     {
-       anim.SetTrigger("MakeRep");
+       anim.SetTrigger("ConfirmStep");
     }
 
-    public void FocusAnim()
+    public void PreviousAnim()
     {
-        anim.SetTrigger("MakeRot");
 
+        anim.SetTrigger("PreviousStep");
     }
+
+   // public void FocusAnim()
+    //{
+    //    anim.SetTrigger("MakeRot");
+
+   // }
 }
