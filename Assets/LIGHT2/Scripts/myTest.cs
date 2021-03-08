@@ -4,5 +4,8 @@ using Microsoft.MixedReality.Toolkit;
 
 public class myTest : MonoBehaviour
 {
-    public GameObject[] myList;
+    public void PrintTest()
+    {
+        Debug.Log("Focused");
+    }
 }
