@@ -1,6 +1,6 @@
 # Light
 Lunar Navigation Helmet
-
+![Logo](https://github.com/Chris9292/Light/blob/main/Logo/LIGHT2.png)
 ### Description
 LIGHT (Lunar navIGation HelmeT) is a project
 # Table of Contents
