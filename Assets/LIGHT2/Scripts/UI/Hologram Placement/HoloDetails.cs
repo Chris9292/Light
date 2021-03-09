@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HoloDetails : MonoBehaviour
@@ -8,9 +7,22 @@ public class HoloDetails : MonoBehaviour
 
     public void OnModelClicked()
     {
-        if (detailsAnim.GetCurrentAnimatorStateInfo(0).IsName("HoloDetailsOpen"))
-            detailsAnim.SetTrigger("CloseDetails");
-        else
+        if (detailsAnim.gameObject.activeSelf == false)
+        {
+            detailsAnim.gameObject.SetActive(true);
             detailsAnim.SetTrigger("OpenDetails");
-    }    
+        }
+        else
+        {
+            StartCoroutine(CloseDetails());
+        }   
+    }
+
+    private IEnumerator CloseDetails()
+    {
+        detailsAnim.SetTrigger("CloseDetails");
+        while (!detailsAnim.GetCurrentAnimatorStateInfo(0).IsName("HoloDetailsIdle"))
+            yield return null;
+        detailsAnim.gameObject.SetActive(false);
+    }
 }
