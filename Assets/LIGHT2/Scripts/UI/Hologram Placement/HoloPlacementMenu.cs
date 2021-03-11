@@ -28,17 +28,20 @@ public class HoloPlacementMenu : MonoBehaviour
         sitescreeningHolo_GO = Resources.Load("Holo Placement/Sitescreening Hologram") as GameObject;
     }
 
+    // Places the current Holo directly in front of the user (at the point of HoloMenu)
     public void PlaceHolo()
     {
         if (hologramType == HologramType.sampling)
         {
             samplingHolo = Instantiate(samplingHolo_GO).GetComponent<SamplingHolo>();
             samplingHolo.SetHoloData(holoName.text, color.options[color.value].text, numberOfRocks.options[numberOfRocks.value].text, photo);
+            samplingHolo.transform.position = transform.position;
         }
         else
         {
             sitescreeningHolo = Instantiate(sitescreeningHolo_GO).GetComponent<SitescreeningHolo>();
             sitescreeningHolo.SetHoloData(holoName.text, description.text, photo);
+            sitescreeningHolo.transform.position = transform.position;
         }
     }
 
@@ -52,11 +55,13 @@ public class HoloPlacementMenu : MonoBehaviour
         RefreshMenuData();
     }
 
+    // Take a photo and save it to photo as Texture2D
     public void TakePhoto()
     {
         photo = photoCaptureUtility.TakePhoto();
     }
 
+    // Refreshes the menu data to reflect the menu of the currently selected hologram. Must be called after calling NextHolo()
     private void RefreshMenuData()
     {
         if (hologramType == HologramType.sampling)

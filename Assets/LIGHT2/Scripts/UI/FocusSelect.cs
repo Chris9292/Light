@@ -9,21 +9,21 @@ using UnityEngine.Events;
 
 public class FocusSelect : MonoBehaviour
 {
-    public Animator holoAnimator;
+    public Animator focusAnimator;
     public UnityEvent OnHoldFocus;
     public float focusDuration = 1f;
     private IEnumerator focusInteraction;
 
     public void StartFocusInteraction()
     {
-        holoAnimator.SetTrigger("StartFocusInteraction");
+        focusAnimator.SetTrigger("StartFocusInteraction");
         focusInteraction = FocusInteraction();
         StartCoroutine(focusInteraction);
     }
 
     public void StopFocusInteraction()
     {
-        holoAnimator.SetTrigger("StopFocusInteraction");
+        focusAnimator.SetTrigger("StopFocusInteraction");
         if (focusInteraction != null)
             StopCoroutine(focusInteraction);
     }
@@ -32,7 +32,7 @@ public class FocusSelect : MonoBehaviour
     {
         yield return new WaitForSeconds(focusDuration);
         TriggerFocusEvents();
-        holoAnimator.SetTrigger("StopFocusInteraction");
+        focusAnimator.SetTrigger("StopFocusInteraction");
     }
 
     private void TriggerFocusEvents()
