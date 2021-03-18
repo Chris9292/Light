@@ -13,11 +13,4 @@ MonoBehaviour:
   m_Name: New MixedRealitySpatialAwarenessSystemProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  observerConfigurations:
-  - componentType:
-      reference: Microsoft.MixedReality.Toolkit.WindowsMixedReality.SpatialAwareness.WindowsMixedRealitySpatialMeshObserver,
-        Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality
-    componentName: Windows Mixed Reality Spatial Mesh Observer
-    priority: 0
-    runtimePlatform: 8
-    observerProfile: {fileID: 11400000, guid: 56b16eb48de89774599af428a2d7fce4, type: 2}
+  observerConfigurations: []
