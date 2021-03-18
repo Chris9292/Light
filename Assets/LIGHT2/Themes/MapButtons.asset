@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7e7db9a2688ed540af9819c456ba2e2, type: 3}
-  m_Name: myTheme
+  m_Name: MapButtons
   m_EditorClassIdentifier: 
   definitions:
   - ClassName: InteractableColorChildrenTheme
@@ -32,7 +32,7 @@ MonoBehaviour:
         Vector2: {x: 0, y: 0}
         Vector3: {x: 0, y: 0, z: 0}
         Vector4: {x: 0, y: 0, z: 0, w: 0}
-        Color: {r: 0, g: 0.6886792, b: 0.024222707, a: 1}
+        Color: {r: 0.99046993, g: 0.7216981, b: 1, a: 1}
         Quaternion: {x: 0, y: 0, z: 0, w: 0}
         AudioClip: {fileID: 0}
         Animation: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
         Vector2: {x: 0, y: 0}
         Vector3: {x: 0, y: 0, z: 0}
         Vector4: {x: 0, y: 0, z: 0, w: 0}
-        Color: {r: 0, g: 0.12243931, b: 0.745283, a: 1}
+        Color: {r: 0.86150146, g: 0.4575472, b: 1, a: 1}
         Quaternion: {x: 0, y: 0, z: 0, w: 0}
         AudioClip: {fileID: 0}
         Animation: {fileID: 0}
@@ -64,7 +64,23 @@ MonoBehaviour:
         Vector2: {x: 0, y: 0}
         Vector3: {x: 0, y: 0, z: 0}
         Vector4: {x: 0, y: 0, z: 0, w: 0}
-        Color: {r: 0.7782996, g: 0.7830189, b: 0, a: 1}
+        Color: {r: 0.41509432, g: 0, b: 0.3761066, a: 1}
+        Quaternion: {x: 0, y: 0, z: 0, w: 0}
+        AudioClip: {fileID: 0}
+        Animation: {fileID: 0}
+      - Name: 
+        String: 
+        Bool: 0
+        Int: 0
+        Float: 0
+        Texture: {fileID: 0}
+        Material: {fileID: 0}
+        Shader: {fileID: 0}
+        GameObject: {fileID: 0}
+        Vector2: {x: 0, y: 0}
+        Vector3: {x: 0, y: 0, z: 0}
+        Vector4: {x: 0, y: 0, z: 0, w: 0}
+        Color: {r: 1, g: 1, b: 1, a: 1}
         Quaternion: {x: 0, y: 0, z: 0, w: 0}
         AudioClip: {fileID: 0}
         Animation: {fileID: 0}
