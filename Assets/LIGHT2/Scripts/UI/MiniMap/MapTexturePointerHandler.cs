@@ -78,9 +78,7 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     public void OnPointerDown(MixedRealityPointerEventData eventData)
     {
         if (CanPlace)
-            
-        {   // to be modified Chris
-            
+        {
             Destination.position = GetClickPosition(Destination.position.y);
             //DONUT_Onclick();
         }

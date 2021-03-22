@@ -14,8 +14,8 @@ public class Grid : MonoBehaviour
     Node[,] NodeArray;//The array of nodes that the A Star algorithm uses.
 
     public List<Node> FinalPath;//The completed path that the red line will be drawn along
-    public GameObject PathObject;
 
+    public List<GameObject> PathObject;
     float fNodeDiameter;//Twice the amount of the radius (Set in the start function)
     int iGridSizeX, iGridSizeY;//Size of the Grid in Array units.
 
@@ -177,33 +177,23 @@ public class Grid : MonoBehaviour
     // }
 
     // Function that instantiates objects on FinalPath. The user should follow the objects.
-    public void createPathObjects(bool isStatic)
+    public void createPathObjects(int object_id)
     {
         if (FinalPath != null)//If the final path is not empty
         {
             foreach(Node n in FinalPath)
             {
-                if (isStatic)
-                {
-                    Instantiate(PathObject, n.vPosition, Quaternion.identity);
-                }
-                else
-                {
-                    GameObject pooledObject = ObjectPool.SharedInstance.GetPooledObject();
-                    if (pooledObject)
-                    {
-                        pooledObject.transform.position = n.vPosition;
-                        pooledObject.transform.rotation = Quaternion.identity;
-                        pooledObject.SetActive(true);
-                    }
-                }
+                Instantiate(PathObject[object_id], n.vPosition, Quaternion.identity);
             }
         }
     }
 
     public void destroyPathObjects()
     {
-        ObjectPool.SharedInstance.DeactivatePoolObjects();
+        foreach(GameObject PathObject in GameObject.FindGameObjectsWithTag("DynamicPathObject"))
+        {
+            Destroy(PathObject);
+        }
     }
 }
 

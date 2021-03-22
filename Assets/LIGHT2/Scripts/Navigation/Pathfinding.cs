@@ -110,8 +110,7 @@ public class Pathfinding : MonoBehaviour {
         
         GridReference.FinalPath = FinalPath;//Set the final path
         GridReference.destroyPathObjects();
-        //GridReference.createPathObjects(Convert.ToInt32(is_static));
-        GridReference.createPathObjects(is_static);
+        GridReference.createPathObjects(Convert.ToInt32(is_static));
     }
     
     // h cost!
