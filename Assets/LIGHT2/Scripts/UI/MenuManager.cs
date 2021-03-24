@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    MainMenuManager menuManager;
+
+    private void Awake()
+    {
+        menuManager = GameObject.FindGameObjectWithTag("MainMenuManager").GetComponent<MainMenuManager>();
+    }
+
     // Distance from the user when the object is enabled
     public float SpawnDistanceFromUser = 2f;
 
@@ -18,5 +25,11 @@ public class MenuManager : MonoBehaviour
     private void OnEnable()
     {
         ChangeSpawnLocation();
+        menuManager.ActiveMenu = true;
+    }
+
+    private void OnDisable()
+    {
+        menuManager.ActiveMenu = false;
     }
 }

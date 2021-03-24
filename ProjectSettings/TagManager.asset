@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - CircularMenuSelections
-  - MainMenu
   - MiniMapCamera
   - DynamicPathObject
   - Undefined
   - StaticPathObject
+  - MainMenuManager
+  - Holograms
   layers:
   - Default
   - TransparentFX

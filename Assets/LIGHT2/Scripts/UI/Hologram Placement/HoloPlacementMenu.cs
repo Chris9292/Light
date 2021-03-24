@@ -3,6 +3,14 @@ using TMPro;
 
 public class HoloPlacementMenu : MonoBehaviour
 {
+    // Parent of all holograms
+    Transform holograms;
+    
+    // Used when taking photo
+    public Transform photoMenu;
+    // Used when not taking photo
+    public Transform placementOptions;
+
     public PhotoCaptureUtility photoCaptureUtility;
     public Transform samplingData;
     public Transform sitescreeningData;
@@ -28,21 +36,29 @@ public class HoloPlacementMenu : MonoBehaviour
         sitescreeningHolo_GO = Resources.Load("Holo Placement/Sitescreening Hologram") as GameObject;
     }
 
+    private void Start()
+    {
+        holograms = GameObject.FindGameObjectWithTag("MainMenuManager").GetComponent<MainMenuManager>().holograms;
+    }
+
     // Places the current Holo directly in front of the user (at the point of HoloMenu)
     public void PlaceHolo()
     {
+        Transform placedHolo;
         if (hologramType == HologramType.sampling)
         {
             samplingHolo = Instantiate(samplingHolo_GO).GetComponent<SamplingHolo>();
             samplingHolo.SetHoloData(holoName.text, color.options[color.value].text, numberOfRocks.options[numberOfRocks.value].text, photo);
-            samplingHolo.transform.position = transform.position;
+            placedHolo = samplingHolo.transform;
         }
         else
         {
             sitescreeningHolo = Instantiate(sitescreeningHolo_GO).GetComponent<SitescreeningHolo>();
             sitescreeningHolo.SetHoloData(holoName.text, description.text, photo);
-            sitescreeningHolo.transform.position = transform.position;
+            placedHolo = sitescreeningHolo.transform;
         }
+        placedHolo.position = transform.position;
+        placedHolo.parent = holograms;
     }
 
     public void NextHolo()
@@ -58,7 +74,12 @@ public class HoloPlacementMenu : MonoBehaviour
     // Take a photo and save it to photo as Texture2D
     public void TakePhoto()
     {
+        placementOptions.gameObject.SetActive(false);
+        photoMenu.gameObject.SetActive(true);
         photo = photoCaptureUtility.TakePhoto();
+        photoMenu.gameObject.SetActive(false);
+        placementOptions.gameObject.SetActive(true);
+
     }
 
     // Refreshes the menu data to reflect the menu of the currently selected hologram. Must be called after calling NextHolo()

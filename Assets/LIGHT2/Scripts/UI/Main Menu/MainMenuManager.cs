@@ -12,13 +12,31 @@ public class MainMenuManager : MonoBehaviour
     // allowed time between clicks for double click
     public float DoubleClickTime = 1f;
 
+    // Parent of all holograms tagged as "Holograms"
+    public Transform holograms;
+
+    // Checks if a menu is active
+    public bool ActiveMenu
+    {
+        get
+        {
+            return isMenuActive;
+        }
+        set
+        {
+            isMenuActive = value;
+            holograms.gameObject.SetActive(!isMenuActive);
+        }
+    }
+    private bool isMenuActive;
 
     private void Awake()
     {
         if (mainMenu == null)
         {
             throw new UnityException("GameObject MainMenu cannot be null");
-        }    
+        }
+        holograms = GameObject.FindGameObjectWithTag("Holograms").transform;    
     }
 
     // Sets the Main Menu to active if double clicked or enables double click if clicked once for 'DoubleClickTime'
