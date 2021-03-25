@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections;
 
+[RequireComponent(typeof(PhotoCaptureUtility))]
 public class HoloPlacementMenu : MonoBehaviour
 {
     // Parent of all holograms
@@ -11,7 +13,10 @@ public class HoloPlacementMenu : MonoBehaviour
     // Used when not taking photo
     public Transform placementOptions;
 
-    public PhotoCaptureUtility photoCaptureUtility;
+    // Used to take photos
+    PhotoCaptureUtility photoCaptureUtility;
+    
+    // The UIs for sampling and sitescreening holos
     public Transform samplingData;
     public Transform sitescreeningData;
 
@@ -34,11 +39,13 @@ public class HoloPlacementMenu : MonoBehaviour
     {
         samplingHolo_GO = Resources.Load("Holo Placement/Sampling Hologram") as GameObject;
         sitescreeningHolo_GO = Resources.Load("Holo Placement/Sitescreening Hologram") as GameObject;
+        photoCaptureUtility = gameObject.GetComponent<PhotoCaptureUtility>();
     }
 
     private void Start()
     {
         holograms = GameObject.FindGameObjectWithTag("MainMenuManager").GetComponent<MainMenuManager>().holograms;
+        photoCaptureUtility.OnPhotoModeEnded += () => SetPhotoFrameActive(false);
     }
 
     // Places the current Holo directly in front of the user (at the point of HoloMenu)
@@ -74,12 +81,13 @@ public class HoloPlacementMenu : MonoBehaviour
     // Take a photo and save it to photo as Texture2D
     public void TakePhoto()
     {
-        placementOptions.gameObject.SetActive(false);
-        photoMenu.gameObject.SetActive(true);
+        StartCoroutine(TakePhotoCor());
+    }
+    IEnumerator TakePhotoCor()
+    {
+        SetPhotoFrameActive(true);
+        yield return new WaitForSeconds(2f);
         photo = photoCaptureUtility.TakePhoto();
-        photoMenu.gameObject.SetActive(false);
-        placementOptions.gameObject.SetActive(true);
-
     }
 
     // Refreshes the menu data to reflect the menu of the currently selected hologram. Must be called after calling NextHolo()
@@ -95,5 +103,12 @@ public class HoloPlacementMenu : MonoBehaviour
             samplingData.gameObject.SetActive(false);
             sitescreeningData.gameObject.SetActive(true);
         }
+    }
+
+    // Enable/Disable the photo frame
+    void SetPhotoFrameActive(bool state)
+    {
+        placementOptions.gameObject.SetActive(!state);
+        photoMenu.gameObject.SetActive(state);
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 26277896}
   - component: {fileID: 26277895}
   m_Layer: 0
-  m_Name: Image (1)
+  m_Name: Map (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 203909639}
   - component: {fileID: 203909638}
   m_Layer: 0
-  m_Name: Image (3)
+  m_Name: Biometrics (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6555,7 +6555,7 @@ GameObject:
   - component: {fileID: 1008568161}
   - component: {fileID: 1008568160}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Holo Placement (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6703,7 +6703,7 @@ GameObject:
   - component: {fileID: 1051267955}
   - component: {fileID: 1051267954}
   m_Layer: 0
-  m_Name: Image (5)
+  m_Name: Missions (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7140,7 +7140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photoMenu: {fileID: 676283117}
   placementOptions: {fileID: 1996164097}
-  photoCaptureUtility: {fileID: 1116826459}
   samplingData: {fileID: 578148264}
   sitescreeningData: {fileID: 1408707585}
   holoName: {fileID: 579603484}
@@ -8808,7 +8807,7 @@ GameObject:
   - component: {fileID: 1391596539}
   - component: {fileID: 1391596538}
   m_Layer: 0
-  m_Name: Image (2)
+  m_Name: Call Base (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10905,7 +10904,7 @@ GameObject:
   - component: {fileID: 1836692829}
   - component: {fileID: 1836692828}
   m_Layer: 0
-  m_Name: Image (4)
+  m_Name: Camera (Image)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13503,7 +13502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photoMenu: {fileID: 0}
   placementOptions: {fileID: 0}
-  photoCaptureUtility: {fileID: 2116490044}
   samplingData: {fileID: 0}
   sitescreeningData: {fileID: 0}
   holoName: {fileID: 0}
