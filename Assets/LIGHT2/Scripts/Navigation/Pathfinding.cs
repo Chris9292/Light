@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour {
 
-    Grid GridReference;//For referencing the grid class
+    NavigationGrid GridReference;//For referencing the grid class
     public Transform A;
     public Transform B;
     public Transform C;
@@ -14,7 +14,7 @@ public class Pathfinding : MonoBehaviour {
 
     private void Awake()//When the program starts
     {
-        GridReference = GetComponent<Grid>();//Get a reference to the game manager
+        GridReference = GetComponent<NavigationGrid>();//Get a reference to the game manager
     }
 
     private void Start()
@@ -109,9 +109,17 @@ public class Pathfinding : MonoBehaviour {
 
         
         GridReference.FinalPath = FinalPath;//Set the final path
-        GridReference.destroyPathObjects();
-        //GridReference.createPathObjects(Convert.ToInt32(is_static));
-        GridReference.createPathObjects(is_static);
+        if (is_static)
+        {
+            GridReference.destroyPathObjects();
+            //GridReference.createPathObjects(Convert.ToInt32(is_static));
+            GridReference.createStaticPathObjects();
+        }
+        else
+        {
+            GridReference.createDynamicPathObjects();
+        }
+
     }
     
     // h cost!
