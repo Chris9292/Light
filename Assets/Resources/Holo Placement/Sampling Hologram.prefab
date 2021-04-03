@@ -1179,9 +1179,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3132458651226582531}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 3.000046, y: -1.9168298, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.14093885, y: -0.6929186, z: -0.6929187, w: -0.1409388}
+  m_LocalPosition: {x: -12.427549, y: -8.625734, z: -5.273674}
+  m_LocalScale: {x: 4.5000005, y: 4.5000005, z: 4.4999995}
   m_Children:
   - {fileID: 39417739035838237}
   - {fileID: 3316037291158999693}
@@ -1211,7 +1211,7 @@ Transform:
   - {fileID: 6296762352003547647}
   - {fileID: 2329451177980161489}
   - {fileID: 8888118334797131091}
-  m_Father: {fileID: 4581789512771411153}
+  m_Father: {fileID: 9047132317816262877}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3399839816789848517
@@ -1400,7 +1400,6 @@ Transform:
   m_LocalScale: {x: 4.4999995, y: 4.5, z: 4.5}
   m_Children:
   - {fileID: 1312790290734668813}
-  - {fileID: 4907716756548614341}
   - {fileID: 560940547816130428}
   m_Father: {fileID: 9047132317816262877}
   m_RootOrder: 0
@@ -2068,7 +2067,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9047132317816262877}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
 --- !u!33 &5614255961435993594
 MeshFilter:
@@ -2798,7 +2797,7 @@ Transform:
   - {fileID: 5000416745198717193}
   - {fileID: 8927292942728999660}
   m_Father: {fileID: 4581789512771411153}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -107.147995, y: 0.23199463, z: 6.796997}
 --- !u!1 &7437850434341810873
 GameObject:
@@ -3161,19 +3160,8 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9047132317816262867}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 9047132317816262867}
-        m_MethodName: StartPlacement
+      - m_Target: {fileID: 75190215791087102}
+        m_MethodName: MoveHolo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3216,10 +3204,10 @@ RectTransform:
   m_GameObject: {fileID: 9047132317367789964}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000074505797, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.048995014}
-  m_LocalScale: {x: 0.09999999, y: 0.10000001, z: 0.10000001}
+  m_LocalScale: {x: 0.1, y: 0.10000001, z: 0.10000001}
   m_Children: []
   m_Father: {fileID: 9047132317816262877}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3623,7 +3611,7 @@ MonoBehaviour:
   - Event:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 9047132316792281734}
+        - m_Target: {fileID: 75190215791087102}
           m_MethodName: CloseDetails
           m_Mode: 1
           m_Arguments:
@@ -3712,6 +3700,7 @@ GameObject:
   - component: {fileID: 9047132317816262877}
   - component: {fileID: 9047132317816262865}
   - component: {fileID: 9047132317816262879}
+  - component: {fileID: 75190215791087102}
   - component: {fileID: 9047132317816262878}
   - component: {fileID: 9047132318554929209}
   - component: {fileID: 5614255962504713477}
@@ -3733,10 +3722,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9047132317816262876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.10000002, y: 0.10000001, z: 0.10000001}
   m_Children:
   - {fileID: 4581789512771411153}
+  - {fileID: 4907716756548614341}
   - {fileID: 5614255961435993598}
   - {fileID: 9047132317367789965}
   - {fileID: 9047132318180945866}
@@ -3764,6 +3754,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2, z: 1}
   m_Center: {x: 0.2, y: 0, z: 0}
+--- !u!114 &75190215791087102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047132317816262876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cfd1018f4c2a5d4fa80edbe3ea2ae0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailsAnim: {fileID: 9047132316792281733}
 --- !u!114 &9047132317816262878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3793,65 +3796,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Events:
-  - Event:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5614255962504713477}
-          m_MethodName: StartFocusInteraction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    ClassName: InteractableOnFocusReceiver
-    AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnFocusReceiver,
-      Microsoft.MixedReality.Toolkit.SDK, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null
-    Settings:
-    - Type: 18
-      Label: On Focus Off
-      Name: OnFocusOff
-      Tooltip: Focus has left the object
-      IntValue: 0
-      StringValue: 
-      FloatValue: 0
-      BoolValue: 0
-      GameObjectValue: {fileID: 0}
-      ScriptableObjectValue: {fileID: 0}
-      ObjectValue: {fileID: 0}
-      MaterialValue: {fileID: 0}
-      TextureValue: {fileID: 0}
-      ColorValue: {r: 0, g: 0, b: 0, a: 0}
-      Vector2Value: {x: 0, y: 0}
-      Vector3Value: {x: 0, y: 0, z: 0}
-      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
-      CurveValue:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 0
-        m_PostInfinity: 0
-        m_RotationOrder: 0
-      AudioClipValue: {fileID: 0}
-      QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
-      EventValue:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 5614255962504713477}
-            m_MethodName: StopFocusInteraction
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      Options: []
+  Events: []
   resetOnDestroy: 0
   enabledOnStart: 1
 --- !u!95 &9047132318554929209
@@ -3888,18 +3833,7 @@ MonoBehaviour:
   focusAnimator: {fileID: 5614255961435993593}
   OnHoldFocus:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9047132316792281734}
-        m_MethodName: OpenDetails
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   focusDuration: 1
 --- !u!114 &9047132317816262871
 MonoBehaviour:
@@ -3970,18 +3904,7 @@ MonoBehaviour:
       m_Calls: []
   onPlacingStopped:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9047132317816262867}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &9047132317918816325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,6 +3917,7 @@ GameObject:
   - component: {fileID: 9047132317918816345}
   - component: {fileID: 9047132317918816344}
   - component: {fileID: 9047132317918816327}
+  - component: {fileID: 1619824483165182608}
   m_Layer: 5
   m_Name: Delete
   m_TagString: Untagged
@@ -4076,6 +4000,117 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1619824483165182608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047132317918816325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events:
+  - Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 75190215791087102}
+          m_MethodName: DeleteHolo
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    ClassName: InteractableOnPressReceiver
+    AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver,
+      Microsoft.MixedReality.Toolkit.SDK, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null
+    Settings:
+    - Type: 18
+      Label: On Release
+      Name: OnRelease
+      Tooltip: The button is released
+      IntValue: 0
+      StringValue: 
+      FloatValue: 0
+      BoolValue: 0
+      GameObjectValue: {fileID: 0}
+      ScriptableObjectValue: {fileID: 0}
+      ObjectValue: {fileID: 0}
+      MaterialValue: {fileID: 0}
+      TextureValue: {fileID: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+      Vector2Value: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      CurveValue:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      AudioClipValue: {fileID: 0}
+      QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+      EventValue:
+        m_PersistentCalls:
+          m_Calls: []
+      Options: []
+    - Type: 5
+      Label: Interaction Filter
+      Name: InteractionFilter
+      Tooltip: Specify whether press event is for near or far interaction
+      IntValue: 0
+      StringValue: 
+      FloatValue: 0
+      BoolValue: 0
+      GameObjectValue: {fileID: 0}
+      ScriptableObjectValue: {fileID: 0}
+      ObjectValue: {fileID: 0}
+      MaterialValue: {fileID: 0}
+      TextureValue: {fileID: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+      Vector2Value: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      CurveValue:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      AudioClipValue: {fileID: 0}
+      QuaternionValue: {x: 0, y: 0, z: 0, w: 0}
+      EventValue:
+        m_PersistentCalls:
+          m_Calls: []
+      Options:
+      - Near and Far
+      - Near Only
+      - Far Only
+  resetOnDestroy: 0
+  enabledOnStart: 1
 --- !u!1 &9047132318180945865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4086,7 +4121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9047132318180945866}
   - component: {fileID: 9047132316792281733}
-  - component: {fileID: 9047132316792281734}
   - component: {fileID: 8237322542803175861}
   - component: {fileID: 3929253018861771768}
   m_Layer: 5
@@ -4105,7 +4139,7 @@ RectTransform:
   m_GameObject: {fileID: 9047132318180945865}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000074505797, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.09999999, y: 0.10000001, z: 0.10000001}
+  m_LocalScale: {x: 0.01, y: 0.10000001, z: 0.10000001}
   m_Children:
   - {fileID: 9047132317670331653}
   - {fileID: 2422865898078292113}
@@ -4114,7 +4148,7 @@ RectTransform:
   - {fileID: 9047132316619676016}
   - {fileID: 9047132317918816326}
   m_Father: {fileID: 9047132317816262877}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4140,20 +4174,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &9047132316792281734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047132318180945865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47dc8b68423a6e49877873b49130348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailsAnim: {fileID: 9047132316792281733}
-  holoModel: {fileID: 9047132317816262878}
 --- !u!114 &8237322542803175861
 MonoBehaviour:
   m_ObjectHideFlags: 0
