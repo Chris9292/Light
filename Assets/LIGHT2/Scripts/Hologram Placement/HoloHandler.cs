@@ -15,18 +15,29 @@ public class HoloHandler : MonoBehaviour
     FocusSelect focusSelect;
     private void Start()
     {
+        // Get variables
         TTP = GetComponent<TapToPlace>();
         interactable = GetComponent<Interactable>();
         focusSelect = GetComponent<FocusSelect>();
 
+        // When placing ends disable TapToPlace to avoid user being able to move object by clicking it
         TTP.OnPlacingStopped.AddListener(() => TTP.enabled = false);
 
+        // Link focusSelect interaction to interactable.onFocuseReceiver
         InteractableOnFocusReceiver focusRec = interactable.AddReceiver<InteractableOnFocusReceiver>();
         focusRec.OnFocusOn.AddListener(focusSelect.StartFocusInteraction);
         focusRec.OnFocusOff.AddListener(focusSelect.StopFocusInteraction);
 
+        // Open details when focus interaction is complete
         focusSelect.OnHoldFocus.AddListener(OpenDetails);
     }
+
+    #region Basic Functionalities
+
+    /// <summary>
+    /// Basic functionalities to link to buttons
+    /// </summary>
+    
     public void DeleteHolo()
     {
         Destroy(gameObject);
@@ -53,6 +64,7 @@ public class HoloHandler : MonoBehaviour
         }
     }
 
+    // Trigger "CloseDetails" animation and wait to finish before setting object to inactive
     IEnumerator closeDetails()
     {
         detailsAnim.SetTrigger("CloseDetails");
@@ -60,4 +72,5 @@ public class HoloHandler : MonoBehaviour
             yield return null;
         detailsAnim.gameObject.SetActive(false);
     }
+    #endregion
 }
