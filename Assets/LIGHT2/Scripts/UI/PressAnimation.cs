@@ -25,7 +25,7 @@ public class PressedMove : MonoBehaviour
         StartCoroutine(Move());
     }
 
-    void Move()
+     IEnumerator Move()
     {
         while(elapsed < MoveDuration)
         {
