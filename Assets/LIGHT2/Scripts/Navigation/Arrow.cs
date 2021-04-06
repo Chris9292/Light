@@ -1,23 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    GameObject dynamicPathObject;
-
     // arrow object that points to the nearest node on the path
-    // tbd
-    // Start is called before the first frame update
-    void Start()
-    {
-        // test arrow
-    }
+    private GameObject objectToLookAt;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-      //  dynamicPathObject = FindObjectOfType()
-        //this.transform.LookAt()    
+        StartCoroutine(UpdateArrowOrientation());
+    }
+    
+    private IEnumerator UpdateArrowOrientation()
+    {
+        // Update the orientation of the arrow to the nearest path object
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            objectToLookAt = ObjectPool.SharedInstance.pooledObjects[0];
+            transform.LookAt(objectToLookAt.transform);
+        }
     }
 }

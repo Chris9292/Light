@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -15,14 +13,12 @@ public class ObjectPool : MonoBehaviour
         SharedInstance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        for (var i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool);
+            var tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
@@ -30,7 +26,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < amountToPool; i++)
+        for (var i = 0; i < amountToPool; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
@@ -42,7 +38,7 @@ public class ObjectPool : MonoBehaviour
 
     public void DeactivatePoolObjects()
     {
-        for (int i = 0; i < amountToPool; i++)
+        for (var i = 0; i < amountToPool; i++)
         {
             if (pooledObjects[i].activeInHierarchy)
             {
@@ -50,8 +46,4 @@ public class ObjectPool : MonoBehaviour
             }
         }
     }
-    
 }
-
-
-

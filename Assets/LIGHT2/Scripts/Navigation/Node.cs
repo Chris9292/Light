@@ -1,28 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Node {
+public class Node
+{
+    // Represents the nodes within the grid
+    
+    // X, Y Position in the Node Array
+    public readonly int iGridX;
+    public readonly int iGridY;
 
-    public int iGridX;//X Position in the Node Array
-    public int iGridY;//Y Position in the Node Array
+    // node is obstructed
+    public readonly bool isObstructed;
+    
+    // The world position of the node
+    public Vector3 vPosition;
 
-    public bool bIsWall;//Tells the program if this node is being obstructed.
-    public Vector3 vPosition;//The world position of the node.
+    // For the A-Star algorithm, will store what node it previously came from so it can trace the shortest path
+    public Node ParentNode;
+    
+    // The cost of moving to the next square
+    public int igCost;
+    
+    // The distance to the goal from this node
+    public int ihCost;
 
-    public Node ParentNode;//For the AStar algoritm, will store what node it previously came from so it cn trace the shortest path.
+    public int FCost => igCost + ihCost;
 
-    public int igCost;//The cost of moving to the next square.
-    public int ihCost;//The distance to the goal from this node.
-
-    public int FCost { get { return igCost + ihCost; } }//Quick get function to add G cost and H Cost, and since we'll never need to edit FCost, we dont need a set function.
-
-    public Node(bool a_bIsWall, Vector3 a_vPos, int a_igridX, int a_igridY)//Constructor
+    public Node(bool aIsObstructed, Vector3 aVPos, int aGridX, int aGridY)//Constructor
     {
-        bIsWall = a_bIsWall;//Tells the program if this node is being obstructed.
-        vPosition = a_vPos;//The world position of the node.
-        iGridX = a_igridX;//X Position in the Node Array
-        iGridY = a_igridY;//Y Position in the Node Array
+        isObstructed = aIsObstructed;
+        vPosition = aVPos;
+        iGridX = aGridX;
+        iGridY = aGridY;
     }
-
 }

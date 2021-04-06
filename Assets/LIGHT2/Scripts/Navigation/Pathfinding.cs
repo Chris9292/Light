@@ -1,133 +1,165 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour {
 
-    NavigationGrid GridReference;//For referencing the grid class
-    public Transform A;
-    public Transform B;
-    public Transform C;
-    public Transform StartPosition;//Starting position to pathfind from
-    public Transform TargetPosition;//Starting position to pathfind to
+    public Transform a;
+    public Transform b;
+    public Transform c;
+    public Transform startPosition;
+    public Transform targetPosition;
+    
+    private NavigationGrid gridReference;
+    private Path path;
 
-    private void Awake()//When the program starts
+    private void Awake()
     {
-        GridReference = GetComponent<NavigationGrid>();//Get a reference to the game manager
+        gridReference = GetComponent<NavigationGrid>();
+        path = GetComponent<Path>();
     }
 
     private void Start()
     {
-        StartCoroutine(FindPath(A, B, true));
-        StartCoroutine(FindPath(B, C, true));
-        StartCoroutine(FindPath(C, A, true));
-        StartCoroutine(FindPath(StartPosition, TargetPosition, false));
+        StartCoroutine(FindPath(a, b, true));
+        StartCoroutine(FindPath(b, c, true));
+        StartCoroutine(FindPath(c, a, true));
+        StartCoroutine(FindPath(startPosition, targetPosition, false));
     }
     
-
-    //FindPath every 3 seconds
-    IEnumerator FindPath(Transform a_Obj, Transform b_Obj, bool is_static)
+    private IEnumerator FindPath(Transform aObj, Transform bObj, bool isStatic)
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
             
-            Vector3 a_position = a_Obj.position;
-            Vector3 b_position = b_Obj.position;
-            // Debug.Log($"position of A: {a_position}");
-            // Debug.Log($"position of B: {b_position}");
-            Node StartNode = GridReference.NodeFromWorldPoint(a_position);//Gets the node closest to the starting position
-            Node TargetNode = GridReference.NodeFromWorldPoint(b_position);//Gets the node closest to the target position
+            var aPosition = aObj.position;
+            var bPosition = bObj.position;
+            var startNode = gridReference.NodeFromWorldPoint(aPosition);
+            var targetNode = gridReference.NodeFromWorldPoint(bPosition);
 
-            List<Node> OpenList = new List<Node>();//List of nodes for the open list
-            HashSet<Node> ClosedList = new HashSet<Node>();//Hashset of nodes for the closed list
+            // List of nodes for the open list
+            var openList = new List<Node>();
+            
+            // Hashset of nodes for the closed list
+            var closedList = new HashSet<Node>();
 
-            OpenList.Add(StartNode);//Add the starting node to the open list to begin the program
-
-            while(OpenList.Count > 0)//Whilst there is something in the open list
+            // Add the starting node to the open list to start the algorithm
+            openList.Add(startNode);
+            
+            // Whilst there is something in the open list
+            while(openList.Count > 0)
             {
-                Node CurrentNode = OpenList[0];//Create a node and set it to the first item in the open list
-                for(int i = 1; i < OpenList.Count; i++)//Loop through the open list starting from the second object
+                // Create a node and set it to the first item in the open list
+                var currentNode = openList[0];
+                
+                // Loop through the open list starting from the second object
+                for(var i = 1; i < openList.Count; i++)
                 {
-                    if (OpenList[i].FCost < CurrentNode.FCost || OpenList[i].FCost == CurrentNode.FCost && OpenList[i].ihCost < CurrentNode.ihCost)//If the f cost of that object is less than or equal to the f cost of the current node
+                    // If the f cost of that object is less than or equal to the f cost of the current node
+                    if (openList[i].FCost < currentNode.FCost || openList[i].FCost == currentNode.FCost && openList[i].ihCost < currentNode.ihCost)
                     {
-                        CurrentNode = OpenList[i];//Set the current node to that object
+                        // Set the current node to that object
+                        currentNode = openList[i];
                     }
                 }
-                OpenList.Remove(CurrentNode);//Remove that from the open list
-                ClosedList.Add(CurrentNode);//And add it to the closed list
+                
+                // Remove it from the open list and add it to the closed list
+                openList.Remove(currentNode);
+                closedList.Add(currentNode);
 
-                if (CurrentNode == TargetNode)//If the current node is the same as the target node
+                // If the current node is the same as the target node
+                if (currentNode == targetNode)
                 {
-                    GetFinalPath(StartNode, TargetNode, is_static);//Calculate the final path
+                    // Calculate the final path
+                    GetFinalPath(startNode, targetNode, isStatic);
                 }
 
-                foreach (Node NeighborNode in GridReference.GetNeighboringNodes(CurrentNode))//Loop through each neighbor of the current node
+                // Loop through each neighbor of the current node
+                foreach (var neighborNode in gridReference.GetNeighboringNodes(currentNode))
                 {
-                    if (!NeighborNode.bIsWall || ClosedList.Contains(NeighborNode))//If the neighbor is a wall or has already been checked
+                    // If the neighbor is a wall or has already been checked
+                    if (neighborNode.isObstructed || closedList.Contains(neighborNode))
                     {
-                        continue;//Skip it
+                        // Skip it
+                        continue;
                     }
-                    int MoveCost = CurrentNode.igCost + GetManhattenDistance(CurrentNode, NeighborNode);//Get the F cost of that neighbor
+                    
+                    // Get the F cost of that neighbor
+                    var moveCost = currentNode.igCost + GetManhattanDistance(currentNode, neighborNode);
 
-                    if (MoveCost < NeighborNode.igCost || !OpenList.Contains(NeighborNode))//If the f cost is greater than the g cost or it is not in the open list
+                    if (!(moveCost < neighborNode.igCost || !openList.Contains(neighborNode)))
                     {
-                        NeighborNode.igCost = MoveCost;//Set the g cost to the f cost
-                        NeighborNode.ihCost = GetManhattenDistance(NeighborNode, TargetNode);//Set the h cost
-                        NeighborNode.ParentNode = CurrentNode;//Set the parent of the node for retracing steps
+                        // Skip it
+                        continue;
+                    }
 
-                        if(!OpenList.Contains(NeighborNode))//If the neighbor is not in the openlist
-                        {
-                            OpenList.Add(NeighborNode);//Add it to the list
-                        }
+                    // Set the g cost to the f cost
+                    neighborNode.igCost = moveCost;
+                    
+                    // Set the h cost
+                    neighborNode.ihCost = GetManhattanDistance(neighborNode, targetNode);
+                    
+                    // Set the parent of the node for retracing steps
+                    neighborNode.ParentNode = currentNode;
+
+                    // If the neighbor is not in the openList
+                    if(!openList.Contains(neighborNode))
+                    {
+                        // Add it to the list
+                        openList.Add(neighborNode);
                     }
                 }
             }
 
-            if (is_static)
+            if (isStatic)
             {
                 break;
             }
         }  
     }
 
-
-
-    void GetFinalPath(Node a_StartingNode, Node a_EndNode, bool is_static)
+    private void GetFinalPath(Node aStartingNode, Node aEndNode, bool isStatic)
     {
-        List<Node> FinalPath = new List<Node>();//List to hold the path sequentially 
-        Node CurrentNode = a_EndNode;//Node to store the current node being checked
-
-        while(CurrentNode != a_StartingNode)//While loop to work through each node going through the parents to the beginning of the path
-        {
-            FinalPath.Add(CurrentNode);//Add that node to the final path
-            CurrentNode = CurrentNode.ParentNode;//Move onto its parent node
-        }
-
-        FinalPath.Reverse();//Reverse the path to get the correct order
-
+        // List to hold the path sequentially 
+        var finalPath = new List<Node>();
         
-        GridReference.FinalPath = FinalPath;//Set the final path
-        if (is_static)
+        // Node to store the current node being checked
+        var currentNode = aEndNode;
+
+        // While loop to work through each node going through the parents to the beginning of the path
+        while(currentNode != aStartingNode)
         {
-            GridReference.destroyPathObjects();
-            //GridReference.createPathObjects(Convert.ToInt32(is_static));
-            GridReference.createStaticPathObjects();
+            // Add that node to the final path
+            finalPath.Add(currentNode);
+            
+            // Move onto its parent node
+            currentNode = currentNode.ParentNode;
+        }
+        
+        // Reverse the path to get the correct order
+        finalPath.Reverse();
+        
+        // Set the final path
+        gridReference.FinalPath = finalPath;
+        
+        // static path / dynamic path
+        if (isStatic)
+        {
+            path.CreateStaticPathObjects();
         }
         else
         {
-            GridReference.createDynamicPathObjects();
+            path.UpdateDynamicPathObjects();
         }
-
     }
     
-    // h cost!
-    int GetManhattenDistance(Node a_nodeA, Node a_nodeB)
+    private static int GetManhattanDistance(Node nodeA, Node nodeB)
     {
-        int ix = Mathf.Abs(a_nodeA.iGridX - a_nodeB.iGridX);//x1-x2
-        int iy = Mathf.Abs(a_nodeA.iGridY - a_nodeB.iGridY);//y1-y2
-
-        return ix + iy;//Return the sum
+        // calculates h cost: (x1 - x2) + (y1 - y2)
+        
+        var ix = Mathf.Abs(nodeA.iGridX - nodeB.iGridX);
+        var iy = Mathf.Abs(nodeA.iGridY - nodeB.iGridY);
+        return ix + iy;
     }
 }

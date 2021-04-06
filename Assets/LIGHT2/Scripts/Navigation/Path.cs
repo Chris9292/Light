@@ -4,18 +4,65 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
-
-    // path line implemented with line renderer object
+    public Transform startPosition;
+    public LineRenderer pathRenderer;
+    public GameObject pathObject;
+    public GameObject arrow;
     
-    // Start is called before the first frame update
-    void Start()
+    private NavigationGrid gridReference;
+
+    private void Start()
     {
-        
+        gridReference = GetComponent<NavigationGrid>();
+        Instantiate(arrow);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateStaticPathObjects()
     {
+        // Function that initializes objects
+        if (gridReference.FinalPath.Count == 0)
+        {
+            
+            return;
+        }
+        foreach (var n in gridReference.FinalPath)
+        {
+            Instantiate(pathObject, n.vPosition, Quaternion.identity);
+        }
+    }
+    
+    public void UpdateDynamicPathObjects()
+    {
+        // Function that activates objects on FinalPath. The user should follow the objects.
+        ObjectPool.SharedInstance.DeactivatePoolObjects();
+        if (gridReference.FinalPath != null)
+        {
+            foreach (var node in gridReference.FinalPath)
+            {
+                var pooledObject = ObjectPool.SharedInstance.GetPooledObject();
+                if (!pooledObject)
+                {
+                    return;
+                }
+                pooledObject.transform.position = node.vPosition;
+                pooledObject.transform.rotation = Quaternion.identity;
+                pooledObject.SetActive(true);
+            }
+        }
+        UpdateLineRenderer();
+    }
+    
+    private void UpdateLineRenderer()
+    {
+        var count = 1;
         
+        // +1 for the starting position = player position
+        pathRenderer.positionCount = gridReference.FinalPath.Count + 1;
+        pathRenderer.SetPosition(0, startPosition.position);
+        foreach (var node in gridReference.FinalPath)
+        {
+            pathRenderer.SetPosition(count, node.vPosition);
+            count++;
+        }
     }
 }
