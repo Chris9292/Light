@@ -84,7 +84,7 @@ MonoBehaviour:
   maintainScale: 1
   smoothing: 1
   lifetime: 0
-  up: 0
+  up: -0.05
   forward: 1.5
 --- !u!1001 &3543710531211699046
 PrefabInstance:
@@ -168,6 +168,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 9173173251269546585, guid: 21101052f1058ec4ead39de655e42696,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 19de4533c83f6f74c9b80491e439c75d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21101052f1058ec4ead39de655e42696, type: 3}
 --- !u!4 &6785602300606515792 stripped
