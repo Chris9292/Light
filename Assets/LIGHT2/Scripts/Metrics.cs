@@ -5,6 +5,8 @@ using UnityEngine;
 public class Metrics : MonoBehaviour
 {
    //Grid GridReference;
+    private float  timeElapsed;
+    private double distanceTraversed;
     private double distance;
     private double velocity;  // m/s
     
@@ -15,8 +17,15 @@ public class Metrics : MonoBehaviour
 
     //Biometrics
     private double MetabolicRate; //  Joule/m
+
     private double HeartRate; //  bpm
-    private double Oxygen; // minutes to end
+    private double avgHeartRate = 90;
+    private bool IsCalm;
+
+    private float OxygenTime; // minutes to oxygen depletion
+    private float OxygenConsRate;
+    private bool timerIsRunning;  //Timer control
+
     private double SuitPressure;
 
     //Environment Metrics
@@ -26,20 +35,26 @@ public class Metrics : MonoBehaviour
     {
         //GridReference = GetComponent<Grid>;  
         //slope = 1; //degrees 
+        timerIsRunning = true;
+        IsCalm = true; 
 
     }
 
   
     void Update()
     {  
-         CalculateVelocity(slope);
+        //CalculateVelocity(slope);
        // Debug.Log(velocity);
-        CalculateMetabolicRate(slope);
-        Debug.Log(MetabolicRate);
+       // CalculateMetabolicRate(slope);
+        //Debug.Log(MetabolicRate);
+        CalculateHeartRate();
+        Debug.Log(HeartRate);
+
     }
 
-    
-    private void CalculateVelocity(float slope)
+        //Approximate astronaut velocity and metabolic rate relations (Santee et al.2001)
+
+    private void CalculateVelocity(float slope) 
     {
        if(slope< -20 || slope > 20)
         velocity = 0;
@@ -80,6 +95,38 @@ public class Metrics : MonoBehaviour
         
     }
 
+    private void CalculateOxygen(){
+        if(timerIsRunning){
+            if (OxygenTime > 0 )
+            {
+                OxygenTime -= Time.deltaTime;
+            }
+            else 
+            {
+                OxygenTime = 0;
+                timerIsRunning = false;
+
+            }
+
+        }
+
+    }
+
+    private void CalculateHeartRate()       //avg: 60-100 , range: 60-160
+    {
+        if(IsCalm)
+        {
+           HeartRate = avgHeartRate + Mathf.Cos(Random.Range(-5,5));
+        }
+
+        HeartRate = avgHeartRate + 50 + Mathf.Cos(Random.Range(-5,5));
+
+
+    }
+
+    private void CalculateSuitPress(){
+
+    }
 
    // int GetManhattanDist(Node nodeA,Node nodeB){
        // int ix = Mathf.Abs(nodeA.iGridX - nodeB.iGridX);//x1-x2
