@@ -11,10 +11,16 @@ public class Path : MonoBehaviour
     
     private NavigationGrid gridReference;
 
+    // Holograms hidden from menus
+    Transform holograms;
+
     private void Start()
     {
+        // Instantiate arrow in holograms
+        holograms = GameObject.FindGameObjectWithTag("Holograms").transform;
+        Instantiate(arrow, holograms);
+
         gridReference = GetComponent<NavigationGrid>();
-        Instantiate(arrow);
     }
 
     public void CreateStaticPathObjects()

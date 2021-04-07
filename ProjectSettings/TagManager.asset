@@ -11,6 +11,8 @@ TagManager:
   - StaticPathObject
   - MainMenuManager
   - Holograms
+  - MainMenu
+  - Navigation
   layers:
   - Default
   - TransparentFX

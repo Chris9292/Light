@@ -13,6 +13,9 @@ public class Pathfinding : MonoBehaviour {
     private NavigationGrid gridReference;
     private Path path;
 
+    public delegate void PathfindingEventHandler();
+    public event PathfindingEventHandler OnPathCalculated;
+
     private void Awake()
     {
         gridReference = GetComponent<NavigationGrid>();
@@ -152,6 +155,8 @@ public class Pathfinding : MonoBehaviour {
         {
             path.UpdateDynamicPathObjects();
         }
+
+        OnPathCalculated?.Invoke();
     }
     
     private static int GetManhattanDistance(Node nodeA, Node nodeB)

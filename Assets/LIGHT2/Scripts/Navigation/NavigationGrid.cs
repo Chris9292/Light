@@ -95,4 +95,38 @@ public class NavigationGrid : MonoBehaviour
         var iy = Mathf.RoundToInt((iGridSizeY - 1) * iyPos);
         return nodeArray[ix, iy];
     }
+        //Function that draws the wireframe
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.DrawWireCube(transform.position, new Vector3(vGridWorldSize.x, 1, vGridWorldSize.y));//Draw a wire cube with the given dimensions from the Unity inspector
+
+        if (nodeArray != null)//If the grid is not empty
+        {
+            foreach (Node n in nodeArray)//Loop through every node in the grid
+            {
+                if (n.isObstructed)//If the current node is a wall node
+                {
+                    Gizmos.color = Color.white;//Set the color of the node
+                }
+                else
+                {
+                    Gizmos.color = Color.yellow;//Set the color of the node
+                }
+
+
+                if (FinalPath != null)//If the final path is not empty
+                {
+                    if (FinalPath.Contains(n))//If the current node is in the final path
+                    {
+                        Gizmos.color = Color.red;//Set the color of that node
+                    }
+
+                }
+                Gizmos.DrawCube(n.vPosition, Vector3.one * (fNodeDiameter));//Draw the node at the position of the node.
+                
+            }
+        }
+    }
 }
+
