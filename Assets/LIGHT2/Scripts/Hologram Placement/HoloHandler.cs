@@ -9,6 +9,7 @@ using UnityEngine;
 public class HoloHandler : MonoBehaviour
 {
     public Animator detailsAnim;
+    public GameObject circularLoading;
 
     TapToPlace TTP;
     Interactable interactable;
@@ -24,12 +25,26 @@ public class HoloHandler : MonoBehaviour
         TTP.OnPlacingStopped.AddListener(() => TTP.enabled = false);
 
         // Link focusSelect interaction to interactable.onFocuseReceiver
+        // Enable/Disable loading bar on focus
         InteractableOnFocusReceiver focusRec = interactable.AddReceiver<InteractableOnFocusReceiver>();
+        
         focusRec.OnFocusOn.AddListener(focusSelect.StartFocusInteraction);
+        focusRec.OnFocusOn.AddListener( () => {
+            if (!detailsAnim.gameObject.activeSelf)
+                circularLoading.SetActive(true);
+        });
+        
         focusRec.OnFocusOff.AddListener(focusSelect.StopFocusInteraction);
+        focusRec.OnFocusOff.AddListener(() => circularLoading.SetActive(false));
 
-        // Open details when focus interaction is complete
+        // Open details and disable loading bar when focus interaction is complete
         focusSelect.OnHoldFocus.AddListener(OpenDetails);
+        focusSelect.OnHoldFocus.AddListener(() => circularLoading.SetActive(false));
+    }
+
+    void OnDisable()
+    {
+        detailsAnim.gameObject.SetActive(false);
     }
 
     #region Basic Functionalities

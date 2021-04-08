@@ -48,6 +48,13 @@ public class HoloPlacementMenu : MonoBehaviour
         photoCaptureUtility.OnPhotoModeEnded += () => SetPhotoFrameActive(false);
     }
 
+    // OnEnable always start on sampling holo
+    private void OnEnable()
+    {
+        hologramType = HologramType.sampling;
+        RefreshMenuData();
+    }
+
     // Places the current Holo directly in front of the user (at the point of HoloMenu)
     public void PlaceHolo()
     {
@@ -95,11 +102,13 @@ public class HoloPlacementMenu : MonoBehaviour
     {
         if (hologramType == HologramType.sampling)
         {
+            holoName.text = "Sampling Holo";
             samplingData.gameObject.SetActive(true);
             sitescreeningData.gameObject.SetActive(false);
         }
         else
         {
+            holoName.text = "Sitescreening Holo";
             samplingData.gameObject.SetActive(false);
             sitescreeningData.gameObject.SetActive(true);
         }
