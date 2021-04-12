@@ -1090,6 +1090,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: set_MustScale
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     ClassName: InteractableOnPressReceiver
     AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver,
       Microsoft.MixedReality.Toolkit.SDK, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null
@@ -1125,6 +1136,17 @@ MonoBehaviour:
           - m_Target: {fileID: 369157918}
             m_MethodName: set_MustZoomIn
             m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: set_MustScale
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2499,6 +2521,7 @@ GameObject:
   - component: {fileID: 369157917}
   - component: {fileID: 369157916}
   - component: {fileID: 369157918}
+  - component: {fileID: 369157919}
   m_Layer: 5
   m_Name: Camera_MiniMap
   m_TagString: MiniMapCamera
@@ -2576,6 +2599,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomSpeed: 0.06
+  minSize: 4
+  maxSize: 16
+--- !u!114 &369157919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369157915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bee7fd322a599429e43856361b1d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowStartScale: {fileID: 423361528623581990}
+  startArrowHeight: 0
+  dynamicStartScale: {fileID: 4306154469845953519, guid: 10f7cfc8a5c80ef4090b4d949d9074e6,
+    type: 3}
+  startDynamicHeight: 0
+  staticStartScale: {fileID: 4306154469845953519, guid: 80b52ba125caaf344a4a214e8c5b3c63,
+    type: 3}
+  startStaticHeight: 0
 --- !u!1 &370042939
 GameObject:
   m_ObjectHideFlags: 0
@@ -4811,6 +4856,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: set_MustScale
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: -1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     ClassName: InteractableOnPressReceiver
     AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver,
       Microsoft.MixedReality.Toolkit.SDK, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null
@@ -4846,6 +4902,17 @@ MonoBehaviour:
           - m_Target: {fileID: 369157918}
             m_MethodName: set_MustZoomOut
             m_Mode: 6
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 0}
+            m_MethodName: set_MustScale
+            m_Mode: 3
             m_Arguments:
               m_ObjectArgument: {fileID: 0}
               m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8617,6 +8684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomSpeed: 0.06
+  minSize: 4
+  maxSize: 16
 --- !u!20 &1461948927
 Camera:
   m_ObjectHideFlags: 0

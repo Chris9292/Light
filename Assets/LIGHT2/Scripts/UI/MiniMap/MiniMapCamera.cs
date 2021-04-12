@@ -13,6 +13,9 @@ public class MiniMapCamera : MonoBehaviour
     // When set to true camera will ZoomOut in each update
     public bool MustZoomOut { get; set; }
 
+    public float minSize = 4.0f;
+    public float maxSize = 16.0f;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -28,12 +31,14 @@ public class MiniMapCamera : MonoBehaviour
     }
     private void ZoomIn()
     {
-        _miniMapCamera.orthographicSize -= ZoomSpeed;
+        _miniMapCamera.orthographicSize = ((_miniMapCamera.orthographicSize - ZoomSpeed) > minSize)?
+                                                _miniMapCamera.orthographicSize - ZoomSpeed : minSize;
     }
 
     private void ZoomOut()
     {
-        _miniMapCamera.orthographicSize += ZoomSpeed;
+        _miniMapCamera.orthographicSize = ((_miniMapCamera.orthographicSize + ZoomSpeed) < maxSize) ?
+                                                _miniMapCamera.orthographicSize + ZoomSpeed : maxSize;
     }
     private void Update()
     {
