@@ -88,18 +88,21 @@ public class HoloPlacementMenu : MonoBehaviour
     // Take a photo and save it to photo as Texture2D
     public void TakePhoto()
     {
-        StartCoroutine(TakePhotoCor());
-    }
-    IEnumerator TakePhotoCor()
-    {
-        SetPhotoFrameActive(true);
-        yield return new WaitForSeconds(2f);
         photo = photoCaptureUtility.TakePhoto();
+    }
+
+    // Enable/Disable the photo frame
+    public void SetPhotoFrameActive(bool state)
+    {
+        placementOptions.gameObject.SetActive(!state);
+        photoMenu.gameObject.SetActive(state);
     }
 
     // Refreshes the menu data to reflect the menu of the currently selected hologram. Must be called after calling NextHolo()
     private void RefreshMenuData()
     {
+        photo = null;
+
         if (hologramType == HologramType.sampling)
         {
             holoName.text = "Sampling Holo";
@@ -112,12 +115,5 @@ public class HoloPlacementMenu : MonoBehaviour
             samplingData.gameObject.SetActive(false);
             sitescreeningData.gameObject.SetActive(true);
         }
-    }
-
-    // Enable/Disable the photo frame
-    void SetPhotoFrameActive(bool state)
-    {
-        placementOptions.gameObject.SetActive(!state);
-        photoMenu.gameObject.SetActive(state);
     }
 }
