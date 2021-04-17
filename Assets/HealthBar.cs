@@ -54,16 +54,4 @@ private IEnumerator ChangeVal(float percent)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
