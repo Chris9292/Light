@@ -34,7 +34,7 @@ public class Pathfinding : MonoBehaviour {
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1);
             
             var aPosition = aObj.position;
             var bPosition = bObj.position;
@@ -154,9 +154,8 @@ public class Pathfinding : MonoBehaviour {
         else
         {
             path.UpdateDynamicPathObjects();
+            OnPathCalculated?.Invoke();
         }
-
-        OnPathCalculated?.Invoke();
     }
     
     private static int GetManhattanDistance(Node nodeA, Node nodeB)

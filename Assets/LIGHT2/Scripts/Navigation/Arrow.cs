@@ -5,9 +5,9 @@ public class Arrow : MonoBehaviour
 {
     // arrow object that points to the nearest node on the path
     private GameObject objectToLookAt;
-    Pathfinding pathfinding;
+    private Pathfinding pathfinding;
 
-    void Awake()
+    private void Awake()
     {
         pathfinding = GameObject.FindGameObjectWithTag("Navigation").GetComponent<Pathfinding>();
     }
@@ -16,10 +16,10 @@ public class Arrow : MonoBehaviour
         pathfinding.OnPathCalculated += UpdateArrow;
     }
     
-    public void UpdateArrow()
+    private void UpdateArrow()
     {
         // Efaptomenh metaksy [0] kai [1]
-        Vector3 direction = ObjectPool.SharedInstance.pooledObjects[1].transform.position - ObjectPool.SharedInstance.pooledObjects[0].transform.position;
+        var direction = ObjectPool.SharedInstance.pooledObjects[1].transform.position - ObjectPool.SharedInstance.pooledObjects[0].transform.position;
         direction = direction.normalized;
 
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);

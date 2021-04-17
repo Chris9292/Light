@@ -96,7 +96,7 @@ public class NavigationGrid : MonoBehaviour
         return nodeArray[ix, iy];
     }
         //Function that draws the wireframe
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
 
         Gizmos.DrawWireCube(transform.position, new Vector3(vGridWorldSize.x, 1, vGridWorldSize.y));//Draw a wire cube with the given dimensions from the Unity inspector
@@ -128,5 +128,6 @@ public class NavigationGrid : MonoBehaviour
             }
         }
     }
+    */
 }
 
