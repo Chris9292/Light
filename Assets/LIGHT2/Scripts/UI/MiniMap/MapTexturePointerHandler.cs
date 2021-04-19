@@ -45,6 +45,9 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     // A tasty donut
     private GameObject DoNut;
 
+    // Used to check for valid place positions
+    NavigationGrid navigationGrid;
+
     private void Awake()
     {
         DoNut = Resources.Load("DO NUT") as GameObject;
@@ -72,16 +75,19 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         catch (UnityException)
         {
             throw new UnityException("Failed to get MainCamera");
-        }     
+        }
+
+        navigationGrid = GameObject.FindGameObjectWithTag("Navigation").GetComponent<NavigationGrid>();
     }
 
     public void OnPointerDown(MixedRealityPointerEventData eventData)
     {
-        if (CanPlace)
-            
-        {   // to be modified Chris
-            
-            Destination.position = GetClickPosition(Destination.position.y);
+        if (CanPlace)     
+        {
+            // Check if we colided with wall before placing new position
+            Vector3 worldClickedPos = GetClickPosition(Destination.position.y);
+            if (!navigationGrid.NodeFromWorldPoint(worldClickedPos).isObstructed)
+                Destination.position = worldClickedPos;
             //DONUT_Onclick();
         }
         else
@@ -131,7 +137,7 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
         // Create a pixel Vector3 to pass into the ScreenToWorldMethod
         // The (0,0) point must be in the bottom left corner so we add the offset which for a 1x1 object is 0.5 and we multiply by the pixel width and height
         // Furthermore, the height is defined as the distance from the camera so since we have a top-down camera we define the height as camera.y - spawn height
-        Vector3 pixelPosition = new Vector3((targetPosition.x + offset) * 700, (targetPosition.y + offset) * 500, MiniMapCamera.gameObject.transform.position.y - Y);
+        Vector3 pixelPosition = new Vector3((targetPosition.x + offset) * 900, (targetPosition.y + offset) * 500, MiniMapCamera.gameObject.transform.position.y - Y);
 
         // Get the global spawn position
         Vector3 spawnPosition = MiniMapCamera.ScreenToWorldPoint(pixelPosition);

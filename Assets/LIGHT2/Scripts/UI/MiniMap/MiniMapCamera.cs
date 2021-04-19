@@ -13,12 +13,22 @@ public class MiniMapCamera : MonoBehaviour
     // When set to true camera will ZoomOut in each update
     public bool MustZoomOut { get; set; }
 
+    [Tooltip("Max Orthographic Size")]
+    public float maxZoomOut = 6f;
+    [Tooltip("Min Orthographic Size")]
+    public float maxZoomIn = 3f;
+
+    // The starting orthographic size of the camera. Used for AutoScaler
+    public float DefaultOrthographicSize { get; private set; }
+    public float CurrentOrthographicSize { get { return _miniMapCamera.orthographicSize; } }
+
     private void Awake()
     {
         mainCamera = Camera.main;
         _miniMapCamera = gameObject.GetComponent<Camera>();
         MustZoomIn = false;
         MustZoomOut = false;
+        DefaultOrthographicSize = _miniMapCamera.orthographicSize;
     }
 
     private void OnEnable()
@@ -37,11 +47,11 @@ public class MiniMapCamera : MonoBehaviour
     }
     private void Update()
     {
-        if (MustZoomIn)
+        if (MustZoomIn && _miniMapCamera.orthographicSize > maxZoomIn)
         {
             ZoomIn();
         }
-        else if (MustZoomOut)
+        else if (MustZoomOut && _miniMapCamera.orthographicSize < maxZoomOut)
         {
             ZoomOut();
         }

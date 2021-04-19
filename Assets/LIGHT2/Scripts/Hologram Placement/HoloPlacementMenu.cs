@@ -71,6 +71,7 @@ public class HoloPlacementMenu : MonoBehaviour
             sitescreeningHolo.SetHoloData(holoName.text, description.text, photo);
             placedHolo = sitescreeningHolo.transform;
         }
+        // Instantiate at the position of canvas
         placedHolo.position = transform.position;
         placedHolo.parent = holograms;
     }
