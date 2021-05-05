@@ -3505,6 +3505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remainIndefinite: 0
+  activeTime: 5
+  appearWithDelay: 0
+  delayTime: 2
+  fontSize: 36
   tooltipPosition: {x: 0, y: 0, z: -1}
   tooltipText: 
 --- !u!1 &419136224
@@ -16298,6 +16303,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remainIndefinite: 0
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 1
+  fontSize: 36
   tooltipPosition: {x: -1.5, y: 0.4, z: 0}
   tooltipText: Hologram Placement
 --- !u!23 &7710917066463825501

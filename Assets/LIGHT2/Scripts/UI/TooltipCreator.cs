@@ -15,6 +15,11 @@ public class TooltipCreator : MonoBehaviour
     [Tooltip("Only relevant if remainIndefinite is set to false")]
     public float activeTime = 5f;
 
+    [Tooltip("Check this in order for the tooltip to appear with a delay")]
+    public bool appearWithDelay;
+    [Tooltip("Only relevant if appearWithDelay is set to true")]
+    public float delayTime = 1f;
+
     public int fontSize = 36;
 
     [Tooltip("Tooltip's local position")]
@@ -43,6 +48,12 @@ public class TooltipCreator : MonoBehaviour
     // Check if we have a Button or Interactable component and AddListeners
     private void Start()
     {
+        float timeToActivate;
+        if (appearWithDelay)
+            timeToActivate = delayTime;
+        else
+            timeToActivate = 0f;
+
         if (TryGetComponent(out Button button))
         {
             // Create an EventTrigger Component and add new entrys
@@ -50,12 +61,13 @@ public class TooltipCreator : MonoBehaviour
             EventTrigger.Entry entry = new EventTrigger.Entry();
 
             entry.eventID = EventTriggerType.PointerEnter;
-            entry.callback.AddListener((data) => tooltip.SetActive(true));
+            entry.callback.AddListener((data) => StartCoroutine(EnableTooltipAfterSeconds(timeToActivate)));
             trigger.triggers.Add(entry);
 
             entry = new EventTrigger.Entry();
             entry.eventID = EventTriggerType.PointerExit;
             entry.callback.AddListener((data) => tooltip.SetActive(false));
+            entry.callback.AddListener((data) => StopAllCoroutines());
             trigger.triggers.Add(entry);
 
             // Turn off after activeTime if remainIndefinite is false
@@ -63,7 +75,7 @@ public class TooltipCreator : MonoBehaviour
             {
                 entry = new EventTrigger.Entry();
                 entry.eventID = EventTriggerType.PointerEnter;
-                entry.callback.AddListener((data) => StartCoroutine(DisableTooltipAfterSeconds(activeTime)));
+                entry.callback.AddListener((data) => StartCoroutine(DisableTooltipAfterSeconds(activeTime + timeToActivate)));
                 trigger.triggers.Add(entry);
             }
         }
@@ -73,12 +85,13 @@ public class TooltipCreator : MonoBehaviour
             if (focusReceiver == null)
                 focusReceiver = interactable.AddReceiver<InteractableOnFocusReceiver>();
 
-            focusReceiver.OnFocusOn.AddListener(() => tooltip.SetActive(true));
+            focusReceiver.OnFocusOn.AddListener(() => StartCoroutine(EnableTooltipAfterSeconds(timeToActivate)));
             focusReceiver.OnFocusOff.AddListener(() => tooltip.SetActive(false));
+            focusReceiver.OnFocusOff.AddListener(() => StopAllCoroutines());
 
             // Turn off after activeTime if remainIndefinite is false
             if (!remainIndefinite)
-                focusReceiver.OnFocusOn.AddListener(() => StartCoroutine(DisableTooltipAfterSeconds(activeTime)));
+                focusReceiver.OnFocusOn.AddListener(() => StartCoroutine(DisableTooltipAfterSeconds(activeTime + timeToActivate)));
         }
         else
         {
@@ -90,5 +103,11 @@ public class TooltipCreator : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         tooltip.SetActive(false);
+    }
+
+    IEnumerator EnableTooltipAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        tooltip.SetActive(true);
     }
 }
