@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1042,6 +1042,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 919132148534330446}
+          m_MethodName: Point
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7602238779984133356}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     ClassName: InteractableOnPressReceiver
     AssemblyQualifiedName: Microsoft.MixedReality.Toolkit.UI.InteractableOnPressReceiver,
       Microsoft.MixedReality.Toolkit.SDK, Version=2.4.0.0, Culture=neutral, PublicKeyToken=null
@@ -1590,6 +1601,17 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 919132148534330446}
+          m_MethodName: Point
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2704362285362802054}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -2466,6 +2488,7 @@ GameObject:
   - component: {fileID: 262999784}
   - component: {fileID: 262999783}
   - component: {fileID: 262999782}
+  - component: {fileID: 262999785}
   m_Layer: 9
   m_Name: B
   m_TagString: Untagged
@@ -2548,6 +2571,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262999780}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &262999785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262999780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b324547d5ede248959a9d7b9d566f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &281887240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,6 +3016,7 @@ GameObject:
   - component: {fileID: 340303747}
   - component: {fileID: 340303746}
   - component: {fileID: 340303745}
+  - component: {fileID: 340303748}
   m_Layer: 9
   m_Name: A
   m_TagString: Untagged
@@ -3063,6 +3099,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340303743}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &340303748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340303743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b324547d5ede248959a9d7b9d566f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &367076092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,6 +6674,7 @@ GameObject:
   - component: {fileID: 800231131}
   - component: {fileID: 800231130}
   - component: {fileID: 800231129}
+  - component: {fileID: 800231132}
   m_Layer: 9
   m_Name: C
   m_TagString: Untagged
@@ -6708,6 +6757,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800231127}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &800231132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800231127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b324547d5ede248959a9d7b9d566f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &837576288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6771,6 +6832,7 @@ GameObject:
   - component: {fileID: 847473893}
   - component: {fileID: 847473892}
   - component: {fileID: 847473891}
+  - component: {fileID: 847473895}
   m_Layer: 9
   m_Name: TargetPosition
   m_TagString: Untagged
@@ -6868,6 +6930,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847473889}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &847473895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847473889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b324547d5ede248959a9d7b9d566f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &870380787
 GameObject:
   m_ObjectHideFlags: 0
@@ -9258,12 +9332,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 919132148534330446}
+          m_MethodName: Point
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgument: {fileID: 2704362285362802054}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9979,6 +10053,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 919132148534330446}
+        m_MethodName: Point
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7602238779984133356}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10897,6 +10982,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 919132148534330446}
+        m_MethodName: Point
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7602238779984133356}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15387,6 +15483,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1527445788}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132148534330446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148534330445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7a6fff677dd3b46852771c2ff307be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &977317555555400318
 Transform:
   m_ObjectHideFlags: 0
@@ -15412,6 +15520,7 @@ GameObject:
   - component: {fileID: 423361528623581990}
   - component: {fileID: 1057155956034277790}
   - component: {fileID: 1057155956034277789}
+  - component: {fileID: 1057155956034277791}
   m_Layer: 9
   m_Name: Player Arrow
   m_TagString: Player
@@ -15457,6 +15566,18 @@ MonoBehaviour:
   additionalOffset: {x: 0, y: 0, z: 0.5}
   additionalRotation: {x: 0, y: 0, z: 0}
   updateSolvers: 1
+--- !u!114 &1057155956034277791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057155956034277788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b324547d5ede248959a9d7b9d566f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1144066039785875483
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,8 @@
+Menu and time spent on them
+
+biometrics-->	0 seconds
+call base-->	0 seconds
+camera-->	0 seconds
+hologram placement-->	0 seconds
+map-->	2.977847 seconds
+mission check list-->	0 seconds
