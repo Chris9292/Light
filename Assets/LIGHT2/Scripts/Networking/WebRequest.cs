@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Newtonsoft.Json;
 using TMPro;
@@ -31,14 +32,24 @@ public class WebRequest: MonoBehaviour
             responseTextMeshPro.text += $"Error: {www.error}\n";
         }
         else {
+
+            try
+            {
+                var jsonResponse = JsonConvert.DeserializeObject<API_Response>(www.downloadHandler.text);
+                responseTextMeshPro.text += $"ID : {jsonResponse.id}" +"\n";
+                responseTextMeshPro.text += $"S_ID : {jsonResponse.s_id}" + "\n";
+                responseTextMeshPro.text += $"Name : {jsonResponse.name}" +"\n";
+                responseTextMeshPro.text += $"Value : {jsonResponse.value}" +"\n";
+                responseTextMeshPro.text += $"Date : {jsonResponse.date}" +"\n\n";
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                responseTextMeshPro.text += $"Exception : {e.Message}\n";
+            }
             
-            var jsonResponse = JsonConvert.DeserializeObject<API_Response>(www.downloadHandler.text);
             
-            responseTextMeshPro.text += $"ID : {jsonResponse.id}" +"\n";
-            responseTextMeshPro.text += $"S_ID : {jsonResponse.s_id}" + "\n";
-            responseTextMeshPro.text += $"Name : {jsonResponse.name}" +"\n";
-            responseTextMeshPro.text += $"Value : {jsonResponse.value}" +"\n";
-            responseTextMeshPro.text += $"Date : {jsonResponse.date}" +"\n\n";
+
         }
         responseTextMeshPro.text += $"HTTP status code: {www.responseCode}";
     }
