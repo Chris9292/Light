@@ -97,6 +97,7 @@ Material:
     - _ClippingPlaneBorder: 0
     - _ClippingPlaneBorderWidth: 0.025
     - _ClippingSphere: 0
+    - _ColorMask: 15
     - _ColorWriteMask: 15
     - _CullMode: 0
     - _CustomMode: 0
@@ -127,6 +128,7 @@ Material:
     - _HoverLight: 1
     - _HoverLightOpaque: 0
     - _IgnoreZScale: 0
+    - _IndependentCorners: 0
     - _InnerGlow: 0
     - _InnerGlowPower: 4
     - _InstancedColor: 0
@@ -159,13 +161,19 @@ Material:
     - _SphericalHarmonics: 0
     - _SrcBlend: 1
     - _Stencil: 0
+    - _StencilComp: 8
     - _StencilComparison: 0
+    - _StencilOp: 0
     - _StencilOperation: 0
+    - _StencilReadMask: 255
     - _StencilReference: 0
+    - _StencilWriteMask: 255
     - _TriplanarMappingBlendSharpness: 4
     - _UVSec: 0
+    - _UseUIAlphaClip: 0
     - _VertexColors: 0
     - _VertexExtrusion: 0
+    - _VertexExtrusionSmoothNormals: 0
     - _VertexExtrusionValue: 0
     - _ZOffsetFactor: 0
     - _ZOffsetUnits: 0
@@ -189,3 +197,4 @@ Material:
     - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
     - _ProximityLightOuterColorOverride: {r: 0, g: 0, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 0.497}
+    - _RoundCornersRadius: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
