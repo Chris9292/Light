@@ -6,14 +6,13 @@ using UnityEngine.Networking;
  
 public class WebRequest: MonoBehaviour
 {
-
     
-    public string url;
+    public static string url = "http://127.0.0.1:8000/api/sensor-data/";
     public TextMeshProUGUI responseTextMeshPro;
 
     void Start()
     {
-        responseTextMeshPro.text = $"Sending Http Request to following URL: {url}\n\n";
+        responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
     }
     public void NetworkAPI()
     {
@@ -22,14 +21,14 @@ public class WebRequest: MonoBehaviour
  
     private IEnumerator GetServerData()
     {
-        responseTextMeshPro.text = $"Sending Http Request to following URL: {url}\n\n";
+        responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
         
         UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 
         if (www.isHttpError || www.isNetworkError) {
             Debug.Log("Error: " + www.error);
-            responseTextMeshPro.text += $"Error: {www.error}";
+            responseTextMeshPro.text += $"Error: {www.error}\n";
         }
         else {
             
@@ -40,8 +39,7 @@ public class WebRequest: MonoBehaviour
             responseTextMeshPro.text += $"Name : {jsonResponse.name}" +"\n";
             responseTextMeshPro.text += $"Value : {jsonResponse.value}" +"\n";
             responseTextMeshPro.text += $"Date : {jsonResponse.date}" +"\n\n";
-            responseTextMeshPro.text += $"HTTP status code: {www.responseCode}";
         }
+        responseTextMeshPro.text += $"HTTP status code: {www.responseCode}";
     }
-    
 }
