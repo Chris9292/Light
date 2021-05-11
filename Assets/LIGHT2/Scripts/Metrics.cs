@@ -10,25 +10,28 @@ public class Metrics : MonoBehaviour
     private double distance;
     private double velocity;  // m/s
     
-    [SerializeField] private float slope;      // degrees
-    [SerializeField] private double mass;       // Kg
-    [SerializeField] private double g;    // Kg/s
+    [SerializeField] private float slope = 0;      // degrees
+    [SerializeField] private double mass = 0;       // Kg
+    [SerializeField] private double g = 0;    // Kg/s
 
 
     //Biometrics
     private double MetabolicRate; //  Joule/m
 
     private double HeartRate; //  bpm
+    private double maxHeartRate;
     private double avgHeartRate = 90;
     private bool IsCalm;
 
     private float OxygenTime; // minutes to oxygen depletion
-    private float OxygenConsRate;
+    private float depletionRate = 1;
     private bool timerIsRunning;  //Timer control
 
     private double SuitPressure;
 
     //Environment Metrics
+
+ 
 
 
     private void Awake()
@@ -48,7 +51,7 @@ public class Metrics : MonoBehaviour
        // CalculateMetabolicRate(slope);
         //Debug.Log(MetabolicRate);
         CalculateHeartRate();
-        Debug.Log(HeartRate);
+        //Debug.Log(HeartRate);
 
     }
 
@@ -99,7 +102,7 @@ public class Metrics : MonoBehaviour
         if(timerIsRunning){
             if (OxygenTime > 0 )
             {
-                OxygenTime -= Time.deltaTime;
+                OxygenTime -= depletionRate * Time.deltaTime;
             }
             else 
             {
