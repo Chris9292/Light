@@ -2,79 +2,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class myTest2 : MonoBehaviour, IMixedRealityPointerHandler
+public class myTest2 : MonoBehaviour
 {
-    private GameObject MainMenu = null;
+    TMP_Text tmp;
 
-    private void Awake()
+    private void Start()
     {
-        foreach (Transform child in transform)
+
+        tmp = GetComponentInChildren<TMP_Text>();
+        Bounds textBounds = tmp.textBounds;
+
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Bounds bounds = mesh.bounds;
+        Vector3[] vertices = mesh.vertices;
+        Vector2[] uvs = new Vector2[vertices.Length];
+
+        int i = 0;
+        while (i < uvs.Length)
         {
-            if (child.tag == "MainMenu")
-            {
-                MainMenu = child.gameObject;
-                break;
-            }
+            uvs[i] = new Vector2(vertices[i].x / textBounds.size.x, vertices[i].z / textBounds.size.x);
+            i++;
         }
-        if (MainMenu == null)
-        {
-            throw new UnityException("No object with MainMenu tag found");
-        }
+        mesh.uv = uvs;
+
+        mesh.bounds = textBounds;
     }
-
-    public void OnPointerClicked(MixedRealityPointerEventData evenData)
-    {
-        var result = evenData.Pointer.Result;
-
-        if (!MainMenu.activeSelf)
-        {
-            Vector3 spawnPosition = result.Details.Point;
-            MainMenu.transform.position = spawnPosition;
-            MainMenu.SetActive(true);
-        }
-        else
-        {
-            MainMenu.SetActive(false);
-        }
-    }
-
-    public void OnPointerDown(MixedRealityPointerEventData eventData)
-    {
-    }
-
-    public void OnPointerDragged(MixedRealityPointerEventData eventData)
-    {
-    }
-
-    public void OnPointerUp(MixedRealityPointerEventData eventData)
-    {
-    }
-
-    private void CreateSphere(Vector3 spawnPosition, Quaternion spawnRotation)
-    {
-        //spawnPosition.z += 1;
-        Texture2D photo = Resources.Load<Texture2D>("chart");
-
-        // Create a GameObject to which the texture can be applied
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Renderer quadRenderer = sphere.GetComponent<Renderer>() as Renderer;
-        quadRenderer.material = new Material(Shader.Find("Mixed Reality Toolkit/Standard"));
-        quadRenderer.material.SetTexture("_MainTex", photo);
-
-        sphere.transform.localPosition = spawnPosition;
-        sphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-    }
-
-    //  Places cubes everywhere!
-    /*
-    public void OnPointerClicked(MixedRealityPointerEventData eventData)
-    {
-        Debug.Log("HI!");
-        var result = eventData.Pointer.Result;
-        var spawnPosition = result.Details.Point;
-        var spawnRotation = Quaternion.LookRotation(result.Details.Normal);
-        CreateSphere(spawnPosition, spawnRotation);
-    }
-    */
 }

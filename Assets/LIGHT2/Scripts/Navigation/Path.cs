@@ -15,6 +15,11 @@ public class Path : MonoBehaviour
     // Holograms hidden from menus
     private Transform holograms;
 
+    //Events
+    public delegate void LineUpdatedHandler(LineRenderer lineRenderer);
+    public event LineUpdatedHandler OnStaticLineUpdated;
+    public event LineUpdatedHandler OnDynamicLineUpdated;
+
     private void Start()
     {
         // Instantiate arrow in holograms
@@ -39,6 +44,9 @@ public class Path : MonoBehaviour
             staticPathRenderer.SetPosition(currentPosition, n.vPosition);
             currentPosition++;
         }
+
+        // Call Events
+        OnStaticLineUpdated?.Invoke(staticPathRenderer);
     }
     
     public void UpdateDynamicPathObjects()
@@ -74,5 +82,8 @@ public class Path : MonoBehaviour
             dynamicPathRenderer.SetPosition(count, node.vPosition);
             count++;
         }
+
+        // Call Events
+        OnDynamicLineUpdated?.Invoke(dynamicPathRenderer);
     }
 }
