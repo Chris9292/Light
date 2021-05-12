@@ -40,12 +40,14 @@ public class TooltipCreator : MonoBehaviour
         tooltip.transform.rotation = transform.rotation;
 
         TMP_Text tmp = tooltip.GetComponent<TMP_Text>();
-        tmp.text = tooltipText;
+        // Replace instead of plain string in order to support line escapes
+        // More here https://forum.unity.com/threads/newline-n-not-parsing-correctly.470634/
+        tmp.text = tooltipText.Replace("\\n", "\n");
         tmp.fontSize = fontSize;
 
     }
 
-    // Check if we have a Button or Interactable component and AddListeners
+    // Check if we have a Button (or Toggle) or Interactable component and AddListeners
     private void Start()
     {
         float timeToActivate;
@@ -54,7 +56,7 @@ public class TooltipCreator : MonoBehaviour
         else
             timeToActivate = 0f;
 
-        if (TryGetComponent(out Button button))
+        if (TryGetComponent(out Button button) || TryGetComponent(out Toggle toggle))
         {
             // Create an EventTrigger Component and add new entrys
             EventTrigger trigger = gameObject.AddComponent<EventTrigger>();
@@ -95,7 +97,7 @@ public class TooltipCreator : MonoBehaviour
         }
         else
         {
-            throw new UnityException("No Button or Interactable component found in " + gameObject);
+            throw new UnityException("No Button, Toggle or Interactable component found in " + gameObject);
         }
     }
 

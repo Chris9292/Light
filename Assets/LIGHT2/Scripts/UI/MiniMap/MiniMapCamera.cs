@@ -31,11 +31,6 @@ public class MiniMapCamera : MonoBehaviour
         DefaultOrthographicSize = _miniMapCamera.orthographicSize;
     }
 
-    private void OnEnable()
-    {
-        // Set this camera directly above the main camera
-        transform.position = new Vector3(mainCamera.transform.position.x, transform.position.y, mainCamera.transform.position.z);
-    }
     private void ZoomIn()
     {
         _miniMapCamera.orthographicSize -= ZoomSpeed;

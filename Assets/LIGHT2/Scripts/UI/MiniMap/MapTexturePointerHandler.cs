@@ -20,7 +20,10 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     // When set to true the MiniMap is in placing mode
     // When set to false the MiniMap is in moving mode
     public bool CanPlace { get; set; }
-
+    public void SetCanPlace(bool value)
+    {
+        CanPlace = value;
+    }
 
     // Move logic
 
@@ -54,7 +57,7 @@ public class MapTexturePointerHandler : MonoBehaviour, IMixedRealityPointerHandl
     }
     private void OnEnable()
     {
-        CanPlace = false;
+        CanPlace = true;
     }
 
     private void Start()

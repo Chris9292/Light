@@ -13,8 +13,12 @@ public class Pathfinding : MonoBehaviour {
     private NavigationGrid gridReference;
     private Path path;
 
+    // Events
     public delegate void PathfindingEventHandler();
     public event PathfindingEventHandler OnPathCalculated;
+
+    [Tooltip("Dynamic path update time")]
+    public float DynamicPathUpdateTime = 0.3f;
 
     private void Awake()
     {
@@ -34,7 +38,7 @@ public class Pathfinding : MonoBehaviour {
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(DynamicPathUpdateTime);
             
             var aPosition = aObj.position;
             var bPosition = bObj.position;
