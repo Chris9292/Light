@@ -87,13 +87,6 @@ MonoBehaviour:
       description: Toggle Profiler
       axisConstraint: 0
   - localizationKey: 
-    keyword: Destroy
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
     keyword: Close
     keyCode: 0
     action:
@@ -102,27 +95,6 @@ MonoBehaviour:
       axisConstraint: 0
   - localizationKey: 
     keyword: Move
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
-    keyword: Log
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
-    keyword: Holograms
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
-    keyword: Repair
     keyCode: 0
     action:
       id: 0
@@ -157,14 +129,7 @@ MonoBehaviour:
       description: Toggle Profiler
       axisConstraint: 0
   - localizationKey: 
-    keyword: Statistics
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
-    keyword: Open
+    keyword: Photo
     keyCode: 0
     action:
       id: 0

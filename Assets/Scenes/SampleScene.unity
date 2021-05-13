@@ -436,6 +436,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60320726}
   m_CullTransparentMesh: 0
+--- !u!1 &61222807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3409705340137723224, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527445788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &61222812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61222807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 1.6, y: -1.2, z: 0}
+  tooltipText: Say "Camera"
+--- !u!114 &61222813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61222807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
+--- !u!114 &61222814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61222807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Camera
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &65818077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1756,7 @@ GameObject:
   - component: {fileID: 171382354}
   - component: {fileID: 171382352}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Icon Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3720,6 +3797,7 @@ GameObject:
   - component: {fileID: 417115275}
   - component: {fileID: 417115274}
   - component: {fileID: 417115273}
+  - component: {fileID: 417115277}
   - component: {fileID: 417115276}
   m_Layer: 5
   m_Name: Next
@@ -3847,16 +3925,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 417115271}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Next
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 417115273}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
+--- !u!114 &417115277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417115271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   remainIndefinite: 0
   activeTime: 5
-  appearWithDelay: 0
+  appearWithDelay: 1
   delayTime: 2
-  fontSize: 36
-  tooltipPosition: {x: 0, y: 0, z: -1}
-  tooltipText: 
+  fontSize: 32
+  tooltipPosition: {x: 1, y: 0, z: 0}
+  tooltipText: Say "Next"
 --- !u!1 &419136224
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,6 +4351,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454314596}
   m_CullTransparentMesh: 0
+--- !u!1 &456347103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2136388331669844571, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527445788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &456347108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456347103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 5.42, y: 0, z: 0}
+  tooltipText: Say "Call"
+--- !u!114 &456347109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456347103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
+--- !u!114 &456347110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456347103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords: []
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &470376021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,6 +5129,8 @@ GameObject:
   - component: {fileID: 541602597}
   - component: {fileID: 541602596}
   - component: {fileID: 541602595}
+  - component: {fileID: 541602598}
+  - component: {fileID: 541602599}
   m_Layer: 5
   m_Name: Previous
   m_TagString: Untagged
@@ -5064,6 +5248,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541602593}
   m_CullTransparentMesh: 0
+--- !u!114 &541602598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541602593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 75, y: 0, z: 0}
+  tooltipText: Say "Previous"
+--- !u!114 &541602599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541602593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Previous
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 541602595}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &576630786
 GameObject:
   m_ObjectHideFlags: 0
@@ -6811,6 +7045,7 @@ GameObject:
   - component: {fileID: 698960752}
   - component: {fileID: 698960751}
   - component: {fileID: 698960754}
+  - component: {fileID: 698960755}
   m_Layer: 5
   m_Name: Close Button
   m_TagString: Untagged
@@ -6947,6 +7182,37 @@ MonoBehaviour:
   fontSize: 32
   tooltipPosition: {x: 310, y: 0, z: 0}
   tooltipText: Say "Close"
+--- !u!114 &698960755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698960749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Close
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 698960751}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!4 &711674756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 68631467a9257d04287cea8337ece650,
@@ -10826,6 +11092,7 @@ GameObject:
   - component: {fileID: 1257356617}
   - component: {fileID: 1257356618}
   - component: {fileID: 1257356619}
+  - component: {fileID: 1257356620}
   m_Layer: 5
   m_Name: Move Toggle
   m_TagString: Untagged
@@ -10919,6 +11186,37 @@ MonoBehaviour:
   fontSize: 32
   tooltipPosition: {x: 294, y: 16, z: 0}
   tooltipText: Say "Move"
+--- !u!114 &1257356620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257356616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Move
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1257356618}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &1278995994
 GameObject:
   m_ObjectHideFlags: 0
@@ -12115,6 +12413,8 @@ GameObject:
   - component: {fileID: 1431111539}
   - component: {fileID: 1431111538}
   - component: {fileID: 1431111541}
+  - component: {fileID: 1431111542}
+  - component: {fileID: 1431111543}
   m_Layer: 5
   m_Name: Place
   m_TagString: Untagged
@@ -12255,6 +12555,56 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1431111542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431111536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 360, y: 0, z: 0}
+  tooltipText: Say "Place"
+--- !u!114 &1431111543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431111536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Place
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1431111538}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1001 &1442627999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13248,6 +13598,8 @@ GameObject:
   - component: {fileID: 1499009435}
   - component: {fileID: 1499009434}
   - component: {fileID: 1499009433}
+  - component: {fileID: 1499009436}
+  - component: {fileID: 1499009437}
   m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
@@ -13365,6 +13717,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499009431}
   m_CullTransparentMesh: 0
+--- !u!114 &1499009436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499009431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 290, y: 0, z: 0}
+  tooltipText: Say "Close"
+--- !u!114 &1499009437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499009431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Close
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1499009433}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &1505208034
 GameObject:
   m_ObjectHideFlags: 0
@@ -13732,6 +14134,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d18fdc0117394904a95c0102775c349f, type: 2}
+    - target: {fileID: 3409705340137723224, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+        type: 3}
+      propertyPath: m_Name
+      value: camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326135749827134532, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+        type: 3}
+      propertyPath: m_Name
+      value: biometrics
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95777a9bcc6b5dc49b909e2a3d392444, type: 3}
 --- !u!1 &1538579442
@@ -14284,6 +14696,79 @@ MonoBehaviour:
   objectToPool: {fileID: 4306154469845953507, guid: 10f7cfc8a5c80ef4090b4d949d9074e6,
     type: 3}
   amountToPool: 40
+--- !u!1 &1618951396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6326135749827134532, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527445788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1618951401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 0, y: -0.39, z: 0}
+  tooltipText: Say "Metrics" | \nMetrics and Vitals
+--- !u!114 &1618951402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
+--- !u!114 &1618951403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618951396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords: []
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &1620354174
 GameObject:
   m_ObjectHideFlags: 0
@@ -15925,7 +16410,7 @@ MonoBehaviour:
   c: {fileID: 800231128}
   startPosition: {fileID: 423361528623581990}
   targetPosition: {fileID: 847473890}
-  DynamicPathUpdateTime: 0.3
+  DynamicPathUpdateTime: 2
 --- !u!114 &1853815000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16976,6 +17461,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968069555}
   m_CullTransparentMesh: 0
+--- !u!1 &1980583378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6750680938265189812, guid: 95777a9bcc6b5dc49b909e2a3d392444,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527445788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1980583383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980583378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 3.07, y: -0.54, z: 0}
+  tooltipText: Say "Missions"
+--- !u!114 &1980583384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980583378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputActionId: 0
+  isGlobal: 0
+  Dimensions: 1
+  dimensionIndex: 0
+  startDimensionIndex: 0
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  voiceRequiresFocus: 1
+  profiles:
+  - Target: {fileID: 0}
+    Themes:
+    - {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  Events: []
+  resetOnDestroy: 0
+  enabledOnStart: 1
+--- !u!114 &1980583385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980583378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords: []
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &1982168768
 GameObject:
   m_ObjectHideFlags: 0
@@ -17648,6 +18206,7 @@ GameObject:
   - component: {fileID: 2035999443}
   - component: {fileID: 2035999444}
   - component: {fileID: 2035999445}
+  - component: {fileID: 2035999446}
   m_Layer: 5
   m_Name: Destination Toggle
   m_TagString: Untagged
@@ -17752,6 +18311,37 @@ MonoBehaviour:
   fontSize: 32
   tooltipPosition: {x: 294, y: 16, z: 0}
   tooltipText: Say "Place"
+--- !u!114 &2035999446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035999442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Place
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2035999444}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &2039681884
 GameObject:
   m_ObjectHideFlags: 0
@@ -18009,6 +18599,8 @@ GameObject:
   - component: {fileID: 2047654718}
   - component: {fileID: 2047654717}
   - component: {fileID: 2047654716}
+  - component: {fileID: 2047654719}
+  - component: {fileID: 2047654720}
   m_Layer: 5
   m_Name: Photo Button
   m_TagString: Untagged
@@ -18126,6 +18718,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047654714}
   m_CullTransparentMesh: 0
+--- !u!114 &2047654719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047654714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 14, y: -60, z: 0}
+  tooltipText: Say "Photo" | Attach a picture of the environment to the placed hologram
+--- !u!114 &2047654720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047654714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Photo
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2047654716}
+          m_MethodName: Select
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &2048767872
 GameObject:
   m_ObjectHideFlags: 0
@@ -19502,6 +20144,67 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1527445788}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2704362285362802059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704362285362802054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainIndefinite: 1
+  activeTime: 5
+  appearWithDelay: 1
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: 3.24, y: 0.17, z: 0}
+  tooltipText: Say "Map"
+--- !u!114 &2704362285362802060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704362285362802054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Map
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 919132148534330445}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1278995994}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!1 &3082784578423010414
 GameObject:
   m_ObjectHideFlags: 0
@@ -20186,13 +20889,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbbd1830e0e5ef44ab328c1de536260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainIndefinite: 0
+  remainIndefinite: 1
   activeTime: 5
   appearWithDelay: 1
-  delayTime: 1
-  fontSize: 36
-  tooltipPosition: {x: -1.5, y: 0.4, z: 0}
-  tooltipText: Hologram Placement
+  delayTime: 2
+  fontSize: 32
+  tooltipPosition: {x: -0.3, y: 0.4, z: 0}
+  tooltipText: Say "Holo Placement"
+--- !u!114 &7602238779984133362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602238779984133356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFocusRequired: 1
+  keywords:
+  - keyword: Holo Placement
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 919132148534330445}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1116826450}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  persistentKeywords: 0
+  speechConfirmationTooltipPrefab: {fileID: 0}
 --- !u!23 &7710917066463825501
 MeshRenderer:
   m_ObjectHideFlags: 0
