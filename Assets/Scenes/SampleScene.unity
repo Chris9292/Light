@@ -2831,9 +2831,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326801827}
-  - component: {fileID: 326801828}
   m_Layer: 0
-  m_Name: Heart Rate (5)
+  m_Name: Humidity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2857,21 +2856,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &326801828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326801826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 1516918290}
 --- !u!1 &363326298
 GameObject:
   m_ObjectHideFlags: 0
@@ -6171,6 +6155,8 @@ MonoBehaviour:
   val: 100
   maxVal: 100
   metricImage: {fileID: 1627973875}
+  metrics: {fileID: 1203874764}
+  bar: {fileID: 679333140}
 --- !u!1 &689662264
 GameObject:
   m_ObjectHideFlags: 0
@@ -7703,11 +7689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d457dbd2f151849af94b5d67cb3c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  A: {fileID: 866121512}
-  B: {fileID: 1386244507}
-  C: {fileID: 1960372145}
-  StartPosition: {fileID: 423361528623581990}
-  TargetPosition: {fileID: 575462042}
+  A: {fileID: 0}
+  B: {fileID: 0}
+  C: {fileID: 0}
+  StartPosition: {fileID: 0}
+  TargetPosition: {fileID: 0}
 --- !u!114 &900821406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8444,9 +8430,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010718190}
-  - component: {fileID: 1010718191}
   m_Layer: 0
-  m_Name: Heart Rate (7)
+  m_Name: Temperature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8470,21 +8455,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1010718191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010718189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 1990419166}
 --- !u!1 &1033161096
 GameObject:
   m_ObjectHideFlags: 0
@@ -9836,9 +9806,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1185268834}
-  - component: {fileID: 1185268835}
   m_Layer: 0
-  m_Name: Heart Rate (1)
+  m_Name: Oxygen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9862,21 +9831,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1185268835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185268833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 488892109}
 --- !u!1 &1203874763
 GameObject:
   m_ObjectHideFlags: 0
@@ -9909,6 +9863,18 @@ MonoBehaviour:
   slope: 1
   mass: 75
   g: 9
+  MetabolicRate: 0
+  maxMetabolicRate: 0
+  HeartRate: 0
+  maxHeartRate: 0
+  avgHeartRate: 90
+  IsCalm: 0
+  OxygenTime: 0
+  maxOxygenTime: 0
+  depletionRate: 1
+  timerIsRunning: 0
+  SuitPressure: 0
+  maxSuitPressure: 0
 --- !u!4 &1203874765
 Transform:
   m_ObjectHideFlags: 0
@@ -12709,7 +12675,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496996756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 5.29}
   m_LocalScale: {x: 0.002, y: 0.002, z: 1}
   m_Children:
   - {fileID: 679333141}
@@ -13673,9 +13639,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1526309890}
-  - component: {fileID: 1526309891}
   m_Layer: 0
-  m_Name: Heart Rate (3)
+  m_Name: SuitPressure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13699,21 +13664,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1526309891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526309889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 30228495}
 --- !u!1 &1534610164
 GameObject:
   m_ObjectHideFlags: 0
@@ -14610,9 +14560,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652249638}
-  - component: {fileID: 1652249639}
   m_Layer: 0
-  m_Name: Heart Rate (6)
+  m_Name: Pressure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14636,21 +14585,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1652249639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652249637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 956235651}
 --- !u!1 &1666334820
 GameObject:
   m_ObjectHideFlags: 0
@@ -15195,9 +15129,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733333648}
-  - component: {fileID: 1733333649}
   m_Layer: 0
-  m_Name: Heart Rate (2)
+  m_Name: Metabolic Rate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15221,21 +15154,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733333649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733333647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 1965161188}
 --- !u!1 &1773365770
 GameObject:
   m_ObjectHideFlags: 0
@@ -15245,9 +15163,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773365771}
-  - component: {fileID: 1773365772}
   m_Layer: 0
-  m_Name: Heart Rate (4)
+  m_Name: Radiation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15271,21 +15188,6 @@ Transform:
   m_Father: {fileID: 1496996761}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1773365772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773365770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc028d2c41c93e84b8915f53bc4a4b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  val: 100
-  maxVal: 100
-  metricImage: {fileID: 1534610166}
 --- !u!1 &1784007943
 GameObject:
   m_ObjectHideFlags: 0
@@ -15528,7 +15430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1853814996
 Transform:
   m_ObjectHideFlags: 0

@@ -16,18 +16,21 @@ public class Metrics : MonoBehaviour
 
 
     //Biometrics
-    private double MetabolicRate; //  Joule/m
+    public double MetabolicRate ; //  Joule/m
+    public double maxMetabolicRate;
+   
+    public double HeartRate;  //  bpm 
+    public double maxHeartRate ;
+    public double avgHeartRate = 90; 
+    public bool IsCalm;
 
-    private double HeartRate; //  bpm
-    private double maxHeartRate;
-    private double avgHeartRate = 90;
-    private bool IsCalm;
+    public float OxygenTime; // minutes to oxygen depletion
+    public float maxOxygenTime;
+    public float depletionRate = 1;
+    public bool timerIsRunning;  //Timer control
 
-    private float OxygenTime; // minutes to oxygen depletion
-    private float depletionRate = 1;
-    private bool timerIsRunning;  //Timer control
-
-    private double SuitPressure;
+    public double SuitPressure;
+    public double maxSuitPressure;
 
     //Environment Metrics
 
@@ -40,7 +43,14 @@ public class Metrics : MonoBehaviour
         //slope = 1; //degrees 
         timerIsRunning = true;
         IsCalm = true; 
+        maxHeartRate = 160;
 
+    }
+
+    void Start(){
+
+        InvokeRepeating("CalculateHeartRate",0,1f);
+        
     }
 
   
@@ -50,8 +60,9 @@ public class Metrics : MonoBehaviour
        // Debug.Log(velocity);
        // CalculateMetabolicRate(slope);
         //Debug.Log(MetabolicRate);
-        CalculateHeartRate();
-        //Debug.Log(HeartRate);
+        //CalculateHeartRate();
+        
+        Debug.Log(HeartRate);
 
     }
 
@@ -115,14 +126,16 @@ public class Metrics : MonoBehaviour
 
     }
 
-    private void CalculateHeartRate()       //avg: 60-100 , range: 60-160
+    public void CalculateHeartRate()       //avg: 60-100 , range: 60-160
     {
         if(IsCalm)
         {
-           HeartRate = avgHeartRate + Mathf.Cos(Random.Range(-5,5));
+           //HeartRate = avgHeartRate + Mathf.Cos(Random.Range(-5,5));
+           HeartRate = avgHeartRate + Random.Range(-5,5);
         }
 
-        HeartRate = avgHeartRate + 50 + Mathf.Cos(Random.Range(-5,5));
+        //HeartRate = avgHeartRate + 50 + Mathf.Cos(Random.Range(-5,5));
+         HeartRate = avgHeartRate + Random.Range(-5,5);
 
 
     }
