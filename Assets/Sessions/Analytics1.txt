@@ -1,0 +1,14 @@
+Menus and time spent on them
+
+Time spent in biometrics in seconds
+0
+Time spent in call base in seconds
+0
+Time spent in camera in seconds
+0
+Time spent in hologram placement in seconds
+20.96736
+Time spent in map in seconds
+2.150806
+Time spent in mission check list in seconds
+0

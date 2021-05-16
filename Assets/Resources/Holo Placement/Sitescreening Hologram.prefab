@@ -1159,6 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeOfEffect: 1.5
+  finalScale: {x: 70, y: 39, z: 20}
 --- !u!114 &3193046506772190619
 MonoBehaviour:
   m_ObjectHideFlags: 0
