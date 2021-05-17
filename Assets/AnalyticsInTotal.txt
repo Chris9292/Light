@@ -1,10 +1,10 @@
 Menus and time spent on them
 
-Time spent in biometrics in seconds
+Time spent in camera in seconds
 0
 Time spent in call base in seconds
 0
-Time spent in camera in seconds
+Time spent in biometrics in seconds
 0
 Time spent in hologram placement in seconds
 20.96736

@@ -4041,8 +4041,8 @@ MonoBehaviour:
   smoothing: 1
   lifetime: 0
   autoStart: 1
-  defaultPlacementDistance: 1.5
-  maxRaycastDistance: 1.5
+  defaultPlacementDistance: 2
+  maxRaycastDistance: 2
   surfaceNormalOffset: 0
   keepOrientationVertical: 0
   rotateAccordingToSurface: 0
