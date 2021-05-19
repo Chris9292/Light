@@ -27,7 +27,7 @@ public class TooltipCreator : MonoBehaviour
 
     public string tooltipText;
 
-    private void Awake()
+    /*private void Awake()
     {
         // Load tooltip from resources
         resourcesTooltip = Resources.Load("Tooltip") as GameObject;
@@ -45,11 +45,27 @@ public class TooltipCreator : MonoBehaviour
         tmp.text = tooltipText.Replace("\\n", "\n");
         tmp.fontSize = fontSize;
 
-    }
+    }*/
 
     // Check if we have a Button (or Toggle) or Interactable component and AddListeners
     private void Start()
     {
+        // Load tooltip from resources
+        resourcesTooltip = Resources.Load("Tooltip") as GameObject;
+
+        // Create tooltip GO
+        tooltip = Instantiate(resourcesTooltip);
+        tooltip.SetActive(false);
+        tooltip.transform.SetParent(transform);
+        tooltip.transform.localPosition = tooltipPosition;
+        tooltip.transform.rotation = transform.rotation;
+
+        TMP_Text tmp = tooltip.GetComponent<TMP_Text>();
+        // Replace instead of plain string in order to support line escapes
+        // More here https://forum.unity.com/threads/newline-n-not-parsing-correctly.470634/
+        tmp.text = tooltipText.Replace("\\n", "\n");
+        tmp.fontSize = fontSize;
+        
         float timeToActivate;
         if (appearWithDelay)
             timeToActivate = delayTime;
