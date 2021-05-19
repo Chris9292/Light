@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1934,6 +1934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 135076323}
+  - component: {fileID: 135076324}
   m_Layer: 5
   m_Name: Oxygen Supply
   m_TagString: Untagged
@@ -1963,6 +1964,22 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &135076324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135076322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 1194636951}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 2107609217}
+  metricUnits: min
 --- !u!4 &151164576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8348817f0f418464cb1bc905894e64da,
@@ -2200,6 +2217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 180672148}
+  - component: {fileID: 180672149}
   m_Layer: 5
   m_Name: Radiation
   m_TagString: Untagged
@@ -2229,6 +2247,22 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &180672149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180672147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 1129238172}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 323650527}
+  metricUnits: kEV
 --- !u!1 &181962839
 GameObject:
   m_ObjectHideFlags: 0
@@ -5569,6 +5603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436395769}
+  - component: {fileID: 436395770}
   m_Layer: 5
   m_Name: Humidity
   m_TagString: Untagged
@@ -5598,6 +5633,22 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &436395770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436395768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 1380038682}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 2002193966}
+  metricUnits: '%'
 --- !u!1 &449288491
 GameObject:
   m_ObjectHideFlags: 0
@@ -8668,7 +8719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &697799044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,6 +9268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736857480}
+  - component: {fileID: 736857481}
   m_Layer: 5
   m_Name: Metabolic Rate
   m_TagString: Untagged
@@ -9246,6 +9298,22 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &736857481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736857479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 388070030}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 1732783228}
+  metricUnits: J/m
 --- !u!1 &742517210
 GameObject:
   m_ObjectHideFlags: 0
@@ -11339,6 +11407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 974973776}
+  - component: {fileID: 974973777}
   m_Layer: 5
   m_Name: Heart Rate
   m_TagString: Untagged
@@ -11368,6 +11437,22 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &974973777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974973775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 2015323242}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 185846869}
+  metricUnits: bpm
 --- !u!1 &976577289
 GameObject:
   m_ObjectHideFlags: 0
@@ -12335,7 +12420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Heart Rate
+  m_text: Metabolic Rate
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12585,7 +12670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Heart Rate
+  m_text: Suit Pressure
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13111,6 +13196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1094973063}
+  - component: {fileID: 1094973064}
   m_Layer: 5
   m_Name: Pressure
   m_TagString: Untagged
@@ -13140,6 +13226,22 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1094973064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094973062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 759920504}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 428124299}
+  metricUnits: PSI
 --- !u!1 &1098386609
 GameObject:
   m_ObjectHideFlags: 0
@@ -15370,6 +15472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345174637}
+  - component: {fileID: 1345174638}
   m_Layer: 5
   m_Name: Suit Pressure
   m_TagString: Untagged
@@ -15399,6 +15502,22 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1345174638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345174636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 1397001990}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 334678321}
+  metricUnits: PSI
 --- !u!1 &1375641129 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0185e7703dd15e428505aaabce9b7a2,
@@ -20562,13 +20681,14 @@ GameObject:
   - component: {fileID: 1818853021}
   - component: {fileID: 1818853020}
   - component: {fileID: 1818853017}
+  - component: {fileID: 1818853018}
   m_Layer: 5
   m_Name: Metrics Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1818853016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20585,7 +20705,7 @@ RectTransform:
   - {fileID: 1821884249}
   - {fileID: 2100094427}
   m_Father: {fileID: 1007543189}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20605,6 +20725,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnDistanceFromUser: 2
+--- !u!114 &1818853018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818853015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b68785741cf3a747b4190e347327142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avgHeartRate: 90
+  depletionRate: 1
+  slope: 0
+  mass: 0
+  g: 0
+  updateTime: 1
 --- !u!114 &1818853020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23235,6 +23373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014289372}
+  - component: {fileID: 2014289373}
   m_Layer: 5
   m_Name: Temperature
   m_TagString: Untagged
@@ -23264,6 +23403,22 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2014289373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014289371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c283d021ae084ef4b9992a07cf4b62d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metricImage: {fileID: 1310184617}
+  metrics: {fileID: 1818853018}
+  valueDisplay: {fileID: 1215866721}
+  metricUnits: K
 --- !u!1 &2015323240
 GameObject:
   m_ObjectHideFlags: 0
