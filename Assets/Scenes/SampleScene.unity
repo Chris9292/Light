@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1995,7 +1995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 151319370}
-  - component: {fileID: 151319372}
+  - component: {fileID: 151319371}
   m_Layer: 0
   m_Name: Networking
   m_TagString: Untagged
@@ -2017,7 +2017,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &151319372
+--- !u!114 &151319371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2026,11 +2026,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 151319369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78a22611d1adee4b9c312ea90e4fca4, type: 3}
+  m_Script: {fileID: 11500000, guid: e92f53ec14621ac4e97cb1f0aaf75efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  responseTextMeshPro: {fileID: 425240015}
-  sensorName: HUM
+  id: 0
+  sensorName: 
+  tempValue: 0
+  radiationValue: 0
+  humidityValue: 0
 --- !u!1 &171382350
 GameObject:
   m_ObjectHideFlags: 0
@@ -8719,7 +8722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &697799044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16970,7 +16973,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 151319372}
+      - m_Target: {fileID: 0}
         m_MethodName: NetworkAPI
         m_Mode: 1
         m_Arguments:
@@ -20688,7 +20691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1818853016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20742,6 +20745,9 @@ MonoBehaviour:
   slope: 0
   mass: 0
   g: 0
+  maxHumidity: 0
+  maxRadiation: 0
+  networkReceiver: {fileID: 151319371}
   updateTime: 1
 --- !u!114 &1818853020
 MonoBehaviour:

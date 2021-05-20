@@ -42,6 +42,15 @@ public class Bar : MonoBehaviour
             case "Suit Pressure":
                 maxVal = metrics.maxSuitPressure;
                 break;
+            case "Temperature":
+                maxVal = metrics.maxTemperature;
+                break;
+            case "Humidity":
+                maxVal = metrics.maxHumidity;
+                break;
+            case "Radiation":
+                maxVal = metrics.maxRadiation;
+                break;
             default:
                 maxVal = 100;
                 break;
@@ -55,6 +64,11 @@ public class Bar : MonoBehaviour
         GetVal();
         StartCoroutine(ChangeVal(percent));
         valueDisplay.text = val.ToString() + " " + metricUnits;
+        
+        /*if (gameObject.name == "Radiation")
+        {
+            Debug.Log(val);
+        }*/
     }
 
     private void GetVal()
@@ -72,6 +86,15 @@ public class Bar : MonoBehaviour
                 break;
             case "Suit Pressure":
                 val = metrics.SuitPressure;
+                break;
+            case "Temperature":
+                val = metrics.Temperature;
+                break;
+            case "Humidity":
+                val = metrics.Humidity;
+                break;
+            case "Radiation":
+                val = metrics.Radiation;
                 break;
             default:
                 val = 50.50;

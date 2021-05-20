@@ -1,68 +1,23 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using System.Collections;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine.Networking;
  
 public class WebRequest: MonoBehaviour
 {
-    UnityWebRequestAsyncOperation asyncOperation = new UnityWebRequestAsyncOperation();
     //private UnityWebRequest www;
     public static string url = "http://192.168.1.7:8000/api/sensor-data/";
     public TextMeshProUGUI responseTextMeshPro;
-    public string sensorName;
-
-    void Start()
+    
+    private void Start()
     {
         responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
-
-        InvokeRepeating("NetworkAPI", 2, 2);
-        //StartCoroutine(GetRequest(url));
-        //GetServerData()
+        //InvokeRepeating(nameof(NetworkAPI), 2, 2);
     }
     
 
-    
-    public void NetworkAPI()
-    {
-        StartCoroutine(GetSensorDataByName(sensorName));
-    }
-    
-    
-    private IEnumerator GetLastSensorData()
-    {
-        responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
-        
-        var www = UnityWebRequest.Get(url);
-        yield return www.SendWebRequest();
-
-        if (www.isHttpError || www.isNetworkError) {
-            Debug.Log("Error: " + www.error);
-            responseTextMeshPro.text += $"Error: {www.error}\n";
-        }
-        else {
-
-            try
-            {
-                var jsonResponse = JsonConvert.DeserializeObject<API_Response>(www.downloadHandler.text);
-                Debug.Log(www.downloadHandler.text);
-                responseTextMeshPro.text += $"ID : {jsonResponse.id}" +"\n";
-                responseTextMeshPro.text += $"Name : {jsonResponse.name}" +"\n";
-                responseTextMeshPro.text += $"Value : {jsonResponse.value}" +"\n";
-                responseTextMeshPro.text += $"Date : {jsonResponse.date}" +"\n\n";
-            }
-            
-            catch (Exception e)
-            {
-                Debug.Log(e);
-                responseTextMeshPro.text += $"Exception : {e.Message}\n";
-            }
-        }
-        responseTextMeshPro.text += $"HTTP status code: {www.responseCode}";
-    }
-    
     private IEnumerator GetSensorDataByName(string sensorName)
     {
 
@@ -96,7 +51,6 @@ public class WebRequest: MonoBehaviour
             }
         }
         responseTextMeshPro.text += $"HTTP status code: {www.responseCode}";
+        
     }
-    
-    
 }

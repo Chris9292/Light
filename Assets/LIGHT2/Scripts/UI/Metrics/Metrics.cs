@@ -2,7 +2,7 @@
 
 public class Metrics : MonoBehaviour
 {
-    //Grid GridReference;
+    
     private double velocity;  // m/s
 
     ///Biometrics
@@ -28,7 +28,19 @@ public class Metrics : MonoBehaviour
 
     public double SuitPressure { get; private set; }
     public double maxSuitPressure { get; private set; }
+    public double Temperature { get; private set; }
+    public double maxTemperature { get; private set; }
+    
+    public double Humidity { get; private set; }
 
+    public double maxHumidity;
+    
+    public double Radiation { get; private set; }
+
+    public double maxRadiation;
+    
+    //Networking API reference
+    [SerializeField] private NetworkAPIReceiver networkReceiver;
 
     // Update Counter
     [Tooltip("Interval between metric updates")]
@@ -43,6 +55,9 @@ public class Metrics : MonoBehaviour
         timerIsRunning = true;
         IsCalm = true;
         maxHeartRate = 160;
+        maxTemperature = 125;
+        maxHumidity = 100;
+        maxRadiation = 300;
 
     }
 
@@ -62,7 +77,10 @@ public class Metrics : MonoBehaviour
             CalculateOxygen();
             CalculateSuitPress();
             CalculateVelocity();
-
+            GetTemperature();
+            GetHumidity();
+            GetRadiation();
+            
             counter = 0f;
         }
     }
@@ -139,6 +157,23 @@ public class Metrics : MonoBehaviour
     {
 
     }
+
+    private void GetTemperature()
+    {
+        Temperature = networkReceiver.tempValue;
+    }
+    
+    private void GetHumidity()
+    {
+        Humidity = networkReceiver.humidityValue;
+    }
+    
+    private void GetRadiation()
+    {
+        Radiation = networkReceiver.radiationValue;
+    }
+    
+    
 
     // int GetManhattanDist(Node nodeA,Node nodeB){
     // int ix = Mathf.Abs(nodeA.iGridX - nodeB.iGridX);//x1-x2
