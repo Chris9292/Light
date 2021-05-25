@@ -28,12 +28,22 @@ public class Pathfinding : MonoBehaviour {
 
     private void Start()
     {
+        CalculateStaticPath();
+        StartCoroutine(FindPath(startPosition, targetPosition, false));
+    }
+
+    // Reset the static line renderer and calculate path
+    public void CalculateStaticPath()
+    {
+        // Reset static path
+        path.staticPathRenderer.positionCount = 0;
+
+        // Calculate static path
         StartCoroutine(FindPath(a, b, true));
         StartCoroutine(FindPath(b, c, true));
         StartCoroutine(FindPath(c, a, true));
-        StartCoroutine(FindPath(startPosition, targetPosition, false));
     }
-    
+
     private IEnumerator FindPath(Transform aObj, Transform bObj, bool isStatic)
     {
         while (true)

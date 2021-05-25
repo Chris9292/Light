@@ -15,9 +15,15 @@ public class NavigationGrid : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    // Initialize Grid
+    public void Init()
+    {
         // Double the radius to get diameter
         fNodeDiameter = fNodeRadius * 2;
-        
+
         // Divide the grids world coordinates by the diameter to get the size of the graph in array units
         iGridSizeX = Mathf.RoundToInt(vGridWorldSize.x / fNodeDiameter);
         iGridSizeY = Mathf.RoundToInt(vGridWorldSize.y / fNodeDiameter);

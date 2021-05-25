@@ -18,6 +18,7 @@ public class CallibrationMenu : MonoBehaviour
     public Canvas menuCanvas;
     TapToPlace TTP;
     public GameObject ExhibitionOnject;
+    public NavigationGrid nav;
 
     private void Start()
     {
@@ -49,7 +50,9 @@ public class CallibrationMenu : MonoBehaviour
     public void Close()
     {
         menuCanvas.gameObject.SetActive(false);
-        EnableExhibition(false);
+        EnableExhibition(false);  
+        nav.Init();
+        nav.gameObject.GetComponent<Pathfinding>().CalculateStaticPath();
     }
 
     public void Move()

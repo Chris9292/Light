@@ -13409,6 +13409,7 @@ MonoBehaviour:
   password: lightlight
   menuCanvas: {fileID: 770418678}
   ExhibitionOnject: {fileID: 3237873346178437170}
+  nav: {fileID: 1853815000}
 --- !u!1 &1094973062
 GameObject:
   m_ObjectHideFlags: 0
