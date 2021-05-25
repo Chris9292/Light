@@ -27,6 +27,9 @@ public class ApproachTargetHandler : MonoBehaviour
     Transform player;
     //public List<Entry> route;
     public int TimerMax = 5;
+
+    [Tooltip("Enable Debug Log")]
+    public bool debugLog;
     
     // Maybe we need different trigger distance for different targets (requires real-world concept testing)
     [Tooltip("Event trigger distance")]
@@ -69,7 +72,7 @@ public class ApproachTargetHandler : MonoBehaviour
         DistA = Vector2.Distance(playerPos, new Vector2(targetA.position.x, targetA.position.z));
         DistB = Vector2.Distance(playerPos, new Vector2(targetB.position.x, targetB.position.z));
         DistC = Vector2.Distance(playerPos, new Vector2(targetC.position.x, targetC.position.z));
-        if (timer > TimerMax)
+        if (timer > TimerMax && debugLog)
         {
             Debug.Log("A: " + DistA.ToString());
             Debug.Log("B: " + DistB.ToString());

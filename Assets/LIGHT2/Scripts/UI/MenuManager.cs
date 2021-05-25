@@ -25,11 +25,11 @@ public class MenuManager : MonoBehaviour
     private void OnEnable()
     {
         ChangeSpawnLocation();
-        menuManager.ActiveMenu = true;
+        menuManager.ActiveMenu = gameObject;
     }
 
     private void OnDisable()
     {
-        menuManager.ActiveMenu = false;
+        menuManager.ActiveMenu = null;
     }
 }

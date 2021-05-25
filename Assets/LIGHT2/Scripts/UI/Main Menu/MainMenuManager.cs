@@ -17,19 +17,27 @@ public class MainMenuManager : MonoBehaviour
     public Transform holograms;
 
     // Checks if a menu is active
-    public bool ActiveMenu
+    public GameObject ActiveMenu
     {
         get
         {
-            return isMenuActive;
+            return activeMenu;
         }
         set
         {
-            isMenuActive = value;
-            holograms.gameObject.SetActive(!isMenuActive);
+            activeMenu = value;
+            if (activeMenu != null)
+                holograms.gameObject.SetActive(false);
+            else
+                holograms.gameObject.SetActive(true);
         }
     }
-    private bool isMenuActive;
+    private GameObject activeMenu;
+
+    public void CloseCurrentMenu()
+    {
+        activeMenu.gameObject.SetActive(false);
+    }
 
     private void Awake()
     {
