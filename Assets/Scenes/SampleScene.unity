@@ -7632,13 +7632,26 @@ MonoBehaviour:
   missionDescription: {fileID: 105781555}
   missionImage: {fileID: 173578740}
   RepairSteps:
-  - description: won the trophy
-    image: {fileID: 21300000, guid: 20f25674b9512834f88938d45ed495d7, type: 3}
-  - description: muahahahah
-    image: {fileID: 21300022, guid: 20f25674b9512834f88938d45ed495d7, type: 3}
+  - description: Open the map and place the destination to the repair area (marked
+      with a little tool).
+    image: {fileID: 21300000, guid: 220190607ea6e254a8a12923393e8d9e, type: 3}
+  - description: Follow the navigation instructions to reach the WeatherBox.
+    image: {fileID: 21300000, guid: de1307f30c216a3408bf9e62d6523c7b, type: 3}
+  - description: Once you have arrived in close proximity to the WeatherBox a hologram
+      will pop up. Follow the instructions to succesfully complete the repair. You
+      may freely move the virtual box.
+    image: {fileID: 21300000, guid: 3b9ae4d55601f58499d9b77b8ced501e, type: 3}
   SamplingSteps:
-  - description: Oooops
-    image: {fileID: 21300000, guid: d5d784e9413fd954f95a9de194e0b26a, type: 3}
+  - description: Open the map and place the destination to the sampling area (marked
+      with a little bag of rocks).
+    image: {fileID: 21300000, guid: 220190607ea6e254a8a12923393e8d9e, type: 3}
+  - description: Once you locate a rock sample open the Holo Placement Menu, fill
+      the necessary values and take a photo of the sample.
+    image: {fileID: 21300000, guid: 5806dbc6bb83106499b955a3d27f30a3, type: 3}
+  - description: Once everything is correctly filled, click the place button and
+      choose where you want to place the hologram. You may relocate the hologram
+      by staring at it or completely delete it.
+    image: {fileID: 21300000, guid: ba1b9e516c898c7469f2ed07a02da3fa, type: 3}
 --- !u!1 &576630786
 GameObject:
   m_ObjectHideFlags: 0
@@ -14394,7 +14407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1087920675
 MonoBehaviour:
   m_ObjectHideFlags: 0
