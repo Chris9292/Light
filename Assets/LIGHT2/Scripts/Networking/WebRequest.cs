@@ -16,12 +16,17 @@ public class WebRequest: MonoBehaviour
         responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
         //InvokeRepeating(nameof(NetworkAPI), 2, 2);
     }
-    
 
+
+    public void NetworkTester()
+    {
+        StartCoroutine((nameof(GetSensorDataByName)));
+    }
+    
     private IEnumerator GetSensorDataByName(string sensorName)
     {
 
-        url = "http://192.168.1.7:8000/api/sensor-data/" + $"{sensorName}/";
+        url = "http://192.168.1.3:8000/api/sensor-data/" + $"{sensorName}/";
         responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
         
         var www = UnityWebRequest.Get(url);
