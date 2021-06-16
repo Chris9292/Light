@@ -6,12 +6,12 @@ using UnityEngine.Networking;
  
 public static class NetworkAPI
 { 
-    public static string url = "http://192.168.1.3:8000/api/sensor-data/";
+    public static string url = "http://192.168.0.100:8000/api/sensor-data/";
     public static API_Response jsonResponse;
     
     public static IEnumerator GetSensorDataByName(string sensorName)
     {
-        url = "http://192.168.1.3:8000/api/sensor-data/" + $"{sensorName}/";
+        url = "http://192.168.0.100:8000/api/sensor-data/" + $"{sensorName}/";
         //responseTextMeshPro.text = $"Sending Http GET Request to following URL: {url}\n\n";
         
         var www = UnityWebRequest.Get(url);

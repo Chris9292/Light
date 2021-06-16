@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 
 public class CameraFeed : MonoBehaviour
 {
-    public string url = "http://192.168.1.3:8000/api/camera/feed/";
+    public string url = "http://192.168.0.100:8000/api/camera/feed/";
 
     // public targetTexture = GetComponent<Renderer>().material.mainTexture
     public Renderer targetRenderer;
