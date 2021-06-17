@@ -36,7 +36,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void CloseCurrentMenu()
     {
-        activeMenu.gameObject.SetActive(false);
+        if (activeMenu != null)
+            activeMenu.SetActive(false);
     }
 
     private void Awake()
