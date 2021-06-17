@@ -18,7 +18,7 @@ public class NetworkAPIReceiver : MonoBehaviour
     private void TestApi()
     {
         StartCoroutine(NetworkAPI.GetSensorDataByName("Temperature[*C]"));
-        StartCoroutine(NetworkAPI.GetSensorDataByName("Radiation[cpm]"));
+        StartCoroutine(NetworkAPI.GetSensorDataByName("radiation"));
         StartCoroutine(NetworkAPI.GetSensorDataByName("Humidity"));
     }
     
@@ -29,7 +29,7 @@ public class NetworkAPIReceiver : MonoBehaviour
         
         switch (sensorName)
         {
-            case "Radiation[cpm]":
+            case "radiation":
                 radiationValue = value;
                 break;
             case "Humidity":

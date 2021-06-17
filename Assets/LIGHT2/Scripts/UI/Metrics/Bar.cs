@@ -34,7 +34,7 @@ public class Bar : MonoBehaviour
                 maxVal = metrics.maxHeartRate;
                 break;
             case "Oxygen Supply":
-                maxVal = metrics.maxOxygenTime;
+                maxVal = (int)metrics.maxOxygenTime;
                 break;
             case "Metabolic Rate":
                 maxVal = metrics.maxMetabolicRate;
@@ -79,7 +79,7 @@ public class Bar : MonoBehaviour
                 val = metrics.HeartRate;
                 break;
             case "Oxygen Supply":
-                val = metrics.OxygenTime;
+                val = metrics.OxygenTimeInMins;
                 break;
             case "Metabolic Rate":
                 val = metrics.MetabolicRate;

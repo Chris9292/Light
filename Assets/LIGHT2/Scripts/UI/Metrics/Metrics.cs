@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Metrics : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Metrics : MonoBehaviour
     
     // Constants
     public double avgHeartRate = 90;
-    public float depletionRate = 1;
+    public double depletionRate ;
     [SerializeField] private float slope = 0;      // degrees
     [SerializeField] private double mass = 0;       // Kg
     [SerializeField] private double g = 0;    // Kg/s
@@ -22,11 +24,12 @@ public class Metrics : MonoBehaviour
     public double maxHeartRate { get; private set; }
     public bool IsCalm { get; private set; }
 
-    public float OxygenTime { get; private set; } // minutes to oxygen depletion
-    public float maxOxygenTime { get; private set; }
+    public double OxygenTime { get; private set; } // seconds to oxygen depletion
+    public int OxygenTimeInMins; // in mins  
+    public double maxOxygenTime { get; private set; } //(800 lts lead to approx. 16 hours with 50 lts/h consumption rate) 
     public bool timerIsRunning { get; private set; } //Timer control
 
-    public double SuitPressure { get; private set; }
+    public double SuitPressure { get; private set; } // kPa
     public double maxSuitPressure { get; private set; }
     public double Temperature { get; private set; }
     public double maxTemperature { get; private set; }
@@ -55,10 +58,16 @@ public class Metrics : MonoBehaviour
         timerIsRunning = true;
         IsCalm = true;
         maxHeartRate = 160;
+        maxOxygenTime = 960; //16 hours in mins
+        maxSuitPressure = 60;
         maxTemperature = 125;
         maxHumidity = 100;
         maxRadiation = 300;
-
+        //depletionRate = 0.283; // L/min
+        depletionRate = 0.833; //realistic rate but not very visible (same with MetRate)
+        //depletionRate = 500;
+        OxygenTime = maxOxygenTime;
+        OxygenTimeInMins = (int)maxOxygenTime;
     }
 
     void Start()
@@ -126,11 +135,13 @@ public class Metrics : MonoBehaviour
 
     private void CalculateOxygen()
     {
+        //depletionRate = 15 + Random.Range(-1, 1); // ml/kg*min
+        
         if (timerIsRunning)
         {
             if (OxygenTime > 0)
             {
-                OxygenTime -= depletionRate * Time.deltaTime;
+                OxygenTime -= (depletionRate/60) * Time.deltaTime;
             }
             else
             {
@@ -139,6 +150,9 @@ public class Metrics : MonoBehaviour
 
             }
         }
+
+        OxygenTimeInMins = (int)Math.Floor(OxygenTime);
+        //Debug.Log(OxygenTime);
     }
 
     public void CalculateHeartRate()       //avg: 60-100 , range: 60-160
@@ -155,7 +169,7 @@ public class Metrics : MonoBehaviour
 
     private void CalculateSuitPress()
     {
-
+        SuitPressure = 29.6 + Random.Range(-5, 10);
     }
 
     private void GetTemperature()
@@ -174,12 +188,4 @@ public class Metrics : MonoBehaviour
     }
     
     
-
-    // int GetManhattanDist(Node nodeA,Node nodeB){
-    // int ix = Mathf.Abs(nodeA.iGridX - nodeB.iGridX);//x1-x2
-    // int iy = Mathf.Abs(nodeA.iGridY - nodeB.iGridY);//y1-y2
-
-    // return ix + iy;//Return the sum
-    // }
-
 }
