@@ -4,41 +4,45 @@ using UnityEngine.Networking;
 
 public class CameraFeed : MonoBehaviour
 {
-    public string url = "http://192.168.0.100:8000/api/camera/feed/";
+    private string url = "http://192.168.1.100:8000/api/camera/feed/";
 
+    private Texture2D tex;
     // public targetTexture = GetComponent<Renderer>().material.mainTexture
     public Renderer targetRenderer;
-    private bool requestDone = false;
+    //private bool requestDone = false;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(nameof(DownloadImage));
-        InvokeRepeating(nameof(CameraFeedCoroutine), 1, 1.0f);
+        tex = new Texture2D(2, 2);
+        InvokeRepeating("CameraFeedCoroutine", 1, 0.1f);
     }
 
     void CameraFeedCoroutine()
     {
-        if (requestDone)
+        if (gameObject.activeInHierarchy)
         {
-            StartCoroutine(nameof(DownloadImage));    
+            StartCoroutine(nameof(DownloadImage));
         }
     }
     
     IEnumerator DownloadImage()
     {
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-        yield return www.SendWebRequest();
+        using (UnityWebRequest uwr = UnityWebRequest.Get(url))
+        {
+            //Texture2D tex = new Texture2D(2, 2);
+            yield return uwr.SendWebRequest();
 
-        requestDone = true;
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log("Error: " + www.error);
+            //requestDone = true;
+            if (uwr.isNetworkError || uwr.isHttpError)
+            {
+                Debug.Log("Error: " + uwr.error);
+            }
+            else
+            {
+                //Texture myTexture = DownloadHandlerTexture.GetContent(uwr);
+                tex.LoadImage(uwr.downloadHandler.data);
+                targetRenderer.material.mainTexture = tex;
+            }
         }
-        else
-        {
-            Texture myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            targetRenderer.material.mainTexture = myTexture;
-        }
-        www.Dispose();
     }
 }
